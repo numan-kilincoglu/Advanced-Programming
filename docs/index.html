@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
-    <title>IBAN Doğrulama</title>
+    <title id="titleMain">IBAN Doğrulama</title>
     <style>
-        body {
+        #title {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        #body {
             max-width: 440px;
         }
 
@@ -38,7 +43,7 @@
 </head>
 
 <body>
-
+    
     <h2 id=title></h2>
     IBAN:
     <input id=iban type=text value="">
@@ -89,7 +94,7 @@
             let ibanTxt = iban.value.replaceAll(/\s/g, '')
             let isaret = kalanHesapla(globalSayiStr) === 1 ? 'IBAN (+97) ✓' : 'IBAN Hatalı'
             out.innerText += '\n' + ibanTxt + ' ' + isaret
-            console.log("+97 Eklenmiş Hali: ",globalSayiStr,"\nKalan: ",kalanHesapla(globalSayiStr))
+            console.log("+97 Eklenmiş Hali: ", globalSayiStr, "\nKalan: ", kalanHesapla(globalSayiStr))
         }
 
         function kalanHesapla(sayiString) {
