@@ -16,10 +16,11 @@
         }
 
         #buttonCustom {
+            border-radius: 3px;
             background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 5px px;
+            padding: px px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -49,7 +50,8 @@
 
     <script>
         "use strict";
-        let yeniIbanStr = "";
+        var globalSayiStr = ""
+        var toplamStr = "";
         function verifyIBAN(s) {
             const ASCII_0 = 48, ASCII_A = 65;
             if (typeof s != 'string') s = String(s)
@@ -74,28 +76,56 @@
                 let v = iban.value.replaceAll(/\s/g, '')
                 let t = ''
                 t = verifyIBAN(v) === true ? 'IBAN ✓' : 'hatalı'
+                let duzenlenen = v.substring(4, v.length) + v.substring(0, 4);
+                globalSayiStr = ibanDuzenle(duzenlenen);
+                console.log(globalSayiStr, "kontrol")
                 out.innerText += '\n' + v + ' ' + t
                 console.log(v, t)
             }
         }
 
         function arttir() {
-            yeniIbanStr = ibanDuzenle(iban.value);
+            globalSayiStr = toplama(globalSayiStr);
+            let ibanTxt = iban.value.replaceAll(/\s/g, '')
+            let isaret = kalanHesapla(globalSayiStr) === 1 ? 'IBAN (+97) ✓' : 'IBAN Hatalı'
+            out.innerText += '\n' + ibanTxt + ' ' + isaret
+            console.log(kalanHesapla(globalSayiStr))
+        }
 
-            console.log(yeniIban)
+        function kalanHesapla(sayiString) {
+            return Array.from(sayiString)
+                .map((sayi) => parseInt(sayi))
+                .reduce((kalan, value) => (kalan * 10 + value) % 97, 0);
+        }
 
+        function toplama(sayi) {
+            console.log(sayi, " giriş")
+            let ikinci = "97";
+            let toplam = "";
+            let elde = 0;
+            let fark = sayi.length - 2;
 
+            for (let i = sayi.length - 1; i >= 0; i--) {
+                let tmp = (Number(sayi.charAt(i)) % 10) + (Number(ikinci.charAt(i - fark)) % 10) + elde;
+                if (tmp > 9) {
+                    toplam = (tmp % 10) + toplam;
+                    elde = Math.floor(tmp / 10);
+                } else {
+                    toplam = tmp + toplam;
+                    elde = 0;
+                }
+            }
+
+            if (elde) {
+                toplam = elde + toplam;
+            }
+            return toplam;
         }
 
         function ibanDuzenle(s) {
-            s = s.replaceAll(/\s/g, '');
             let yeniString = "";
             for (let i = 0; i < s.length; ++i) {
-                if (s.charCodeAt(i) >= 65 && s.charCodeAt(i) <= 90) {
-                    yeniString += (s.charCodeAt(i) - 55)
-                } else {
-                    yeniString += s.charAt(i);
-                }
+                yeniString += s.charCodeAt(i) >= 65 && s.charCodeAt(i) <= 90 ? (s.charCodeAt(i) - 55) : s.charAt(i)
             }
             return yeniString;
         }
