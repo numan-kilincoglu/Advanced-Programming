@@ -11,35 +11,45 @@
             max-width: 440px;
         }
 
-        #inp {
-            width: 50px
+        #iban {
+            width: 270px
+        }
+
+        #buttonCustom {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 5px px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
         }
 
         #out {
-            font-size: 18px;
+            font-size: 19px;
             background: greenyellow;
             color: black;
             text-align: center;
-            padding: 15px;
-
+            padding: 15px 15px;
         }
     </style>
 </head>
 
 <body>
-    <pre></pre>,
-    <h2 id=tab></h2>
-    Initial
-    <input id=inp type=number value=0 onChange="out.innerText=value">
+
+    <h2 id=title></h2>
+    IBAN:
+    <input id=iban type=text value="">
     &emsp;
-    <input type=button value='+' onClick="increment()">
+    <input id=buttonCustom type=button value='Kontrol' onClick="report()">
+    <input id=buttonCustom type=button value='+' onClick="arttir()">
     <p id=out></p>
     <hr />
-    <p>Referans: <a href="https://www.w3schools.com/js/" target="NewTab">JS Tutorial</a>
-    </p>
 
     <script>
         "use strict";
+        let yeniIbanStr = "";
         function verifyIBAN(s) {
             const ASCII_0 = 48, ASCII_A = 65;
             if (typeof s != 'string') s = String(s)
@@ -59,11 +69,41 @@
             return acc == 1;
         }
 
-        function increment() {
-            out.innerText = Number(out.innerText) + 1
+        function report() {
+            if (iban.value != "") {
+                let v = iban.value.replaceAll(/\s/g, '')
+                let t = ''
+                t = verifyIBAN(v) === true ? 'IBAN ✓' : 'hatalı'
+                out.innerText += '\n' + v + ' ' + t
+                console.log(v, t)
+            }
         }
-        tab.innerText = document.title;
-        out.innerText = 0; increment();
+
+        function arttir() {
+            yeniIbanStr = ibanDuzenle(iban.value);
+
+            console.log(yeniIban)
+
+
+        }
+
+        function ibanDuzenle(s) {
+            s = s.replaceAll(/\s/g, '');
+            let yeniString = "";
+            for (let i = 0; i < s.length; ++i) {
+                if (s.charCodeAt(i) >= 65 && s.charCodeAt(i) <= 90) {
+                    yeniString += (s.charCodeAt(i) - 55)
+                } else {
+                    yeniString += s.charAt(i);
+                }
+            }
+            return yeniString;
+        }
+
+        title.innerText = document.title
+        iban.value = ''
+
     </script>
 </body>
+
 </html>
