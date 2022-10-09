@@ -75,7 +75,7 @@
             if (iban.value != "") {
                 let v = iban.value.replaceAll(/\s/g, '')
                 let t = ''
-                t = verifyIBAN(v) === true ? 'IBAN ✓' : 'hatalı'
+                t = verifyIBAN(v) === true ? 'IBAN ✓' : 'IBAN Hatalı'
                 let duzenlenen = v.substring(4, v.length) + v.substring(0, 4);
                 globalSayiStr = ibanDuzenle(duzenlenen);
                 console.log(globalSayiStr, "kontrol")
@@ -89,7 +89,7 @@
             let ibanTxt = iban.value.replaceAll(/\s/g, '')
             let isaret = kalanHesapla(globalSayiStr) === 1 ? 'IBAN (+97) ✓' : 'IBAN Hatalı'
             out.innerText += '\n' + ibanTxt + ' ' + isaret
-            console.log(kalanHesapla(globalSayiStr))
+            console.log("+97 Eklenmiş Hali: ",globalSayiStr,"\nKalan: ",kalanHesapla(globalSayiStr))
         }
 
         function kalanHesapla(sayiString) {
@@ -99,7 +99,6 @@
         }
 
         function toplama(sayi) {
-            console.log(sayi, " giriş")
             let ikinci = "97";
             let toplam = "";
             let elde = 0;
