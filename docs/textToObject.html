@@ -44,69 +44,49 @@
 
     <script>
         "use strict";
-
         function toList(str) {
             if (str) inp.value = str
             else str = inp.value
             let [row0, ...data] = str.split('\n');
             let keys = row0.split('\t');
-            let a = data.map(toObject)
+            let liste = data.map(toObject)
 
             function toObject(x) {
                 let b = {}
-                
-                for (let [i,s] of x.split('\t').entries())
-                    b[keys[i]] = s
-
-                console.log(b)    
+                for (let [i, s] of x.split('\t').entries())
+                    b[keys[i]] = (isNaN(s)? s : Number(s))
                 return b
             }
+            out.innerText = JSON.stringify(liste, '', 2)
+            console.table(liste)
 
+            //let filtered = liste.filter(x => x.SellingPrice < 80)
+            /*console.log("SellingPrice < 80 Olan Itemler:\n", filtered)
+            filtered = liste.filter(x => x.SellingPrice > 80 || x.purchasePrice > 150)
+            console.log("SellingPrice > 80 ve PurchasePrice > 150 olanItemler\:n", filtered)
+            console.log(liste.map(x => x.PurchasePrice * 10))""
+            */
+            return liste;
         }
 
-        /*
-        function toList(str) {
-          function toObject(x) {
-            let b = {}
-            for (let [i,s] of x.split('\t').entries())
-              b[keys[i]] = (isNaN(s)? s : Number(s))
-            return b
-          }
-            if (str) inp.value = str
-            else str = inp.value
-            let [d0, ...data] = str.split('\n')
-            let keys = d0.split('\t')
-            console.log("Keys:", keys)
-            let a = data.map(toObject)
-            out.innerText = JSON.stringify(a, '' ,2)
-            console.table(a)
-            return a
-        }
-        */
 
-        const PLANET =
-            `Name	Diam	Mass	Radius	Period
-Mercury	0.382	0.06	0.40	0.24
-Venus	0.949	0.82	0.72	0.62
-Earth	1.000	1.00	1.00	1.00
-Mars	0.532	0.11	1.52	1.88
-Jupiter	11.209	317.80	5.20	11.86
-Saturn	9.449	95.20	9.54	29.46
-Uranus	4.007	14.60	19.22	84.01
-Neptune	3.883	17.20	30.06	164.80`,
-
-            MOUNT = `mountain	height	place
-Kilimanjaro	5895	Tanzania
-Everest 	8848	Nepal
-Mount Fuji	3776	Japan
-Vaalserberg	323	Netherlands
-Denali  	6168	United States
-Popocatepetl	5465	Mexico
-Mont Blanc	4808	Italy/France`
+        const itemsNames = `Name	PurchasePrice	SellingPrice	ProfitMargin	RateofProfit
+ak-neon ww	25	50	52	10,00
+hyper  ww	176	270	94	53,41
+emperor ww	160	222	62	38,75
+mob-mw	41	63	22	53,66
+mob-mw	41	63	22	53,66
+mob-mw	41	61	20	48,78
+emperor	41	61	20	48,78
+ak-asii	41	61	20	48,78
+emp-ww	160	222	62	38,75
+emp-ww	160	222	62	38,75
+deci-fm	93	129	36	38,71
+mob-mw	41	63	22	53,66`
 
         title.innerText = document.title
         sample.innerText = toList
-        inp.value = MOUNT
+        inp.value = itemsNames
     //toList()  //array of objects
     </script>
     <script src="/2022/navbar.js"></script>
