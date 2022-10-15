@@ -11,7 +11,7 @@ function range2(start, end, step) {
     let array = [];
 
     if (step == undefined) {
-        return array=range(start, end);
+        return array = range(start, end);
     } else if (step < 0) {
         for (let i = start; i >= end; i += step) {
             if (i < end) {
