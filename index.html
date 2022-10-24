@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://nkilincoglu.github.io/Advanced-Programming/navbar.css">
+    <!-- <link rel="stylesheet" href="https://nkilincoglu.github.io/Advanced-Programming/navbar.css"> -->
 
     <title>Advanced Programming</title>
 
@@ -16,29 +16,108 @@
         </a>
     </div>
     <style>
+        .top-nav {
+            width: 100%;
+            border-style: hidden;
+            border-radius: 3px;
+            overflow: hidden;
+            background-color: #34465D;
+            font-size: 25px;
+        }
+
+        .top-nav a {
+            float: center;
+            display: block;
+            color: #5f718a;
+            text-align: center;
+            padding: 16px 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .top-nav a:active {
+            color: #839dc1;
+        }
+
+        .top-nav .icon {
+            display: none;
+        }
+
         body {
             max-width: 600px;
-            background: #cef;
+            background: #b7d0f3;
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            height: inherit;
+        }
+
+        h2 {
+            font-size: 17px;
+            padding-left: 5px;
+        }
+
+        hr.line {
+            border: 0;
+            height: 1px;
+            background: #34465D;
+        }
+
+        ul {
+            font-size: 15px;
+            padding-left: 5px;
+        }
+
+        li {
+            list-style: none;
+            padding: 0px 0px 20px;
+        }
     </style>
 </head>
 
 <body>
-    <p>Tools:</p>
-    <ul>
-        <li>Browser: Chrome/Edge/Brave/Opera</li>
-        <li>Editor:
-
-        </li>
-
-    </ul>
-
-    <p>Lab instructors:</p>
-    <ul>
-
-    </ul>
+    <div>
+        <h2>Github</h2>
+        <ul>
+            <li>
+                Click <a href="https://github.com/nkilincoglu/Advanced-Programming" target="_blank"
+                    style="color: black;">here</a> for Github repository.
+            </li>
+        </ul>
+        <hr class="line">
+        <h2 style="padding: 5px 0px 5px 5px;">Classworks</h2>
+        <ul>
+            <li>
+                CW0 - <a href="https://github.com/nkilincoglu/Advanced-Programming/" target="_blank"
+                    style="color: black;">Browser Tools</a>
+            </li>
+            <li>
+                CW1 - <a href="https://github.com/nkilincoglu/Advanced-Programming" target="_blank"
+                    style="color: black;">IBAN verificationÖdev</a>
+            </li>
+            <li>
+                CW2 - <a href="https://github.com/nkilincoglu/Advanced-Programming" target="_blank"
+                    style="color: black;">Text to ObjectsÖdev</a>
+            </li>
+            <li>
+                CW3 - <a href="https://github.com/nkilincoglu/Advanced-Programming" target="_blank"
+                    style="color: black;">Object Inspector</a>
+            </li>
+        </ul>
+        <hr class="line">
+        <h2 style="padding: 5px 0px 5px 5px;">Homeworks</h2>
+        <ul>
+            <li>
+                HW1 - <a href="https://github.com/nkilincoglu/Advanced-Programming/" target="_blank"
+                    style="color: black;">Array Methods</a>
+            </li>
+        </ul>
+    </div>
 
     <script>
         function myFunction() {
