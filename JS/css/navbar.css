@@ -1,0 +1,29 @@
+.top-nav {
+    overflow: hidden;
+    background-color: #34465D;
+}
+
+.top-nav a {
+    float: left;
+    display: block;
+    color: #5f718a;
+    text-align: left;
+    padding: 10px 12px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.top-nav a:hover {
+    background-color: white;
+    color: yellow;
+}
+
+.top-nav a:active {
+    background-color: orange;
+    color: aquamarine;
+}
+
+.top-nav .icon {
+    display: none;
+}
