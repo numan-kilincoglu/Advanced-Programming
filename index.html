@@ -5,15 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://nkilincoglu.github.io/Advanced-Programming/navbar.css">
+
     <title>Advanced Programming</title>
-    <script src="https://nkilincoglu.github.io/Advanced-Programming/navbar.js"></script>
 
+    <div class="top-nav" id="myTopnav">
+        <a href="#Advanced Programming" class="active">Advanced Programming</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
     <style>
-        h2.title-text {
-            color: black;
-            font-family: 'Montserrat', sans-serif;
-        }
-
         body {
             max-width: 600px;
             background: #cef;
@@ -24,21 +26,30 @@
 </head>
 
 <body>
-    <h2 class="title-text">Advanced Programming</h2>
-
     <p>Tools:</p>
     <ul>
         <li>Browser: Chrome/Edge/Brave/Opera</li>
         <li>Editor:
-           
+
         </li>
-        
+
     </ul>
 
     <p>Lab instructors:</p>
     <ul>
-        
+
     </ul>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "top-nav") {
+                x.className += " responsive";
+            } else {
+                x.className = "top-nav";
+            }
+        }
+    </script>
 
 </body>
 
