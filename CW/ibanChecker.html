@@ -17,7 +17,7 @@
         }
 
         #iban {
-            width: 270px
+            max-width: 440px;
         }
 
         #buttonCustom {
@@ -55,7 +55,7 @@
 </head>
 
 <body>
-    
+
     <h2 id=title></h2>
     IBAN:
     <input id=iban type=text value="">
@@ -111,8 +111,8 @@
 
         function kalanHesapla(sayiString) {
             return Array.from(sayiString)
-                        .map((sayi) => parseInt(sayi))
-                        .reduce((kalan, value) => (kalan * 10 + value) % 97, 0);
+                .map((sayi) => parseInt(sayi))
+                .reduce((kalan, value) => (kalan * 10 + value) % 97, 0);
         }
 
         function toplama(sayi) {
