@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" href="../images/icon192.png">
     <title>List of Objects </title>
 
     <style>
@@ -54,7 +53,7 @@
             function toObject(x) {
                 let b = {}
                 for (let [i, s] of x.split('\t').entries())
-                    b[keys[i]] = (isNaN(s)? s : Number(s))
+                    b[keys[i]] = (isNaN(s) ? s : Number(s))
                 return b
             }
             out.innerText = JSON.stringify(liste, '', 2)
