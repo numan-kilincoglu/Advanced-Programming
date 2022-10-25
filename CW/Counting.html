@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Counter</title>
+    <title>Sayaç Uygulaması</title>
 
     <style>
+        /* CSS comment */
         body {
             max-width: 440px;
         }
@@ -15,9 +16,22 @@
             width: 50px
         }
 
+        #button-custom {
+            border-radius: 3px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: px px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            width: 70px;
+        }
+
         .out {
             font-size: 18px;
-            background: blue;
+            background: red;
             color: white;
             text-align: center;
             padding: 10px;
@@ -26,19 +40,19 @@
 </head>
 
 <body>
-    Counter:
+    <h2></h2>
+    Sayı
     <input type=number value=0 onChange="out.innerText=value">
     &emsp;
-    <button onClick="increment()">Arttir</button>
+    <button id="button-custom" onClick="increment()">Arttır</button>
     <p class=out>0</p>
 
     <hr />
-    <b>Sample code</b>
-
+    <b>Örnek Kod</b>
+    </hr>
     <hr />
-    <p>Ref: <a href="https://www.w3schools.com/js/" target="NewTab">JS Tutorial</a>
-    </p>
-
+    <pre></pre>
+    <p>Ref: <a href="https://www.w3schools.com/js/" target="NewTab">JS Tutorial</a></p>
     <script>
         "use strict";
         // JavaScript comment
@@ -46,7 +60,7 @@
             let c = Number(out.innerText) + 1
             console.log("counter = " + c)
             out.innerText = c
-        }
+}
         document.querySelector('h2').innerText = document.title
         document.querySelector('pre').innerText = increment
         const out = document.querySelector('.out'); increment()
