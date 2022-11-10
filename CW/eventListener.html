@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+  <title>Fetch API </title>
+
+  <style>
+    /* CSS comment */
+    body {
+      max-width: 440px;
+    }
+
+    #url {
+      width: 300px;
+    }
+
+    span,
+    #url {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Battery Status</h2>
+  <!--<p title="Does the URL exist?">
+  URL <input type=url id=url value="https://numan-kilincoglu.github.io/Advanced-Programming/"
+      onChange="check()"> <span id=resp></span>
+</p>
+<--->
+  <p title="charge status">
+    Battery Status: <span id=batteryStatus></span>
+  </p>
+
+  <p title="battery level">
+    Remaining Battery: <span id=batteryLevel></span>
+  </p>
+
+  <p title="remanining battery">
+    Remaining Time: <span id=remainingTime></span>
+  </p>
+  <hr />
+  <h2>Online Status</h2>
+  <p title="online status">
+    Status: <span id=online></span>
+  </p>
+  <hr />
+  <h2>Keyboard Status</h2>
+
+  <p title="keyboard">
+    Key: <span id=key></span>
+  </p>
+  <hr />
+
+  <script>
+    "use strict";
+    function init() {
+      batteryFun();
+      onlineStatus();
+      keyListener();
+    }
+
+    function keyListener() {
+      document.addEventListener('keyup', (event) => {
+        const keyName = event.key;
+        key.innerText = keyName;
+      }, false);
+
+      document.addEventListener('keydown', (event) => {
+        const keyName = event.key;
+        key.innerText = keyName;
+
+      }, false);
+
+    }
+
+    function onlineStatus() {
+      online.innerText = navigator.onLine ? "connected -- online" : "disconnected -- offline"
+      ononline = event => online.innerText = "connected"
+      onoffline = event => online.innerText = "disconnected"
+    }
+
+    function batteryFun() {
+      navigator.getBattery().then((battery) => {
+        function updateAllBatteryInfo() {
+          updateChargeInfo();
+          updateLevelInfo();
+          updateDischargingInfo();
+        }
+        updateAllBatteryInfo();
+
+        battery.addEventListener("batteryStatus", () => {
+          updateChargeInfo();
+        });
+        function updateChargeInfo() {
+          batteryStatus.innerText = battery.charging ? "Charging" : "Discharging";
+        }
+
+        battery.addEventListener("batteryLevel", () => {
+          updateLevelInfo();
+        });
+        function updateLevelInfo() {
+          batteryLevel.innerText = battery.level * 100 + " %";
+        }
+
+        battery.addEventListener("remainingTime", () => {
+          updateDischargingInfo();
+        });
+
+        function updateDischargingInfo() {
+          var h = Math.floor(battery.dischargingTime / 3600).toString().padStart(2,'0'),
+          m = Math.floor(battery.dischargingTime % 3600 / 60).toString().padStart(2,'0'),
+          s = Math.floor(battery.dischargingTime % 60).toString().padStart(2,'0');
+          remainingTime.innerText = h + " : " + m + " : " + s;
+        }
+      });
+
+    }
+    //title.innerText = document.title;
+
+    init();
+  </script>
+
+</body>
+
+</html>
