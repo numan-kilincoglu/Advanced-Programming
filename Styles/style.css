@@ -22,6 +22,8 @@
 
 .top-nav a:active {
     color: #839dc1;
+    padding-bottom: 15px;
+    align-items:baseline;
 }
 
 .top-nav .icon {
