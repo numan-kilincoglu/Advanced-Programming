@@ -1,0 +1,92 @@
+#buttonLayout {
+    align-items: center;
+    width: 99%;
+    height: 25px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#animationLayout {
+    background-color: white;
+    width: 99%;
+    height: 200px;
+    display: block;
+    margin-top: 30px;
+    border: solid #aaa
+}
+
+#h2 {
+    text-align: center;
+    font-size: 14px;
+}
+
+#startButton {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    width: 90px;
+    height: 20px;
+    border-width: 0.5px;
+    color: black;
+    border-color: #44c767;
+    font-weight: 500;
+    border-radius: 8px;
+    background: #44c767;
+}
+
+.buttonClass:hover {
+    background: #5cbf2a
+}
+
+#stopButton {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    width: 90px;
+    height: 20px;
+    border-radius: 8px;
+    border-width: 0.5px;
+    color: black;
+    border-color: red;
+    font-weight: 500;
+    background: red;
+}
+
+#pauseButton {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    width: 90px;
+    height: 20px;
+    border-width: 0.5px;
+    color: black;
+    border-color: orange;
+    font-weight: 500;
+    border-radius: 8px;
+    background: orange;
+}
+
+#nextButton {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    width: 90px;
+    height: 20px;
+    border-width: 0.5px;
+    border-radius: 8px;
+    font-weight: 500;
+    border-color: white;
+    background: lightblue;
+}
+
+#prevButton {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    width: 90px;
+    height: 20px;
+    border-width: 0.5px;
+    border-radius: 8px;
+    font-weight: 500;
+    border-color: white;
+    background: lightblue;
+}
+
+.buttonClass:hover {
+    background: #5cbf2a
+}
