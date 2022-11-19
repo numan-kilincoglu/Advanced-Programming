@@ -42,11 +42,14 @@ function getImages() {
 }
 
 function start() {
+    console.log("burda1");
     if (stop && pause) {
         stop = false;
         pause = false;
         currentIndex = 0;
         heroX = 0;
+        disableButtons();
+        console.log("burda");
         render();
         return;
     }
@@ -55,6 +58,8 @@ function start() {
         currentIndex = 0;
         heroX = 0;
         pauseAnimation();
+        disableButtons();
+        console.log("burda2");
         return;
     }
 
@@ -62,12 +67,15 @@ function start() {
         currentIndex = 0;
         heroX = 0;
         stopAnimation();
+        disableButtons();
+        console.log("burda3");
         render();
         return;
     }
-
+    console.log("burda4");
     currentIndex = 0;
     heroX = 0;
+    disableButtons();
 }
 
 function pauseAnimation() {
@@ -102,6 +110,11 @@ function next() {
         context.clearRect(0, 0, width, height);
         context.drawImage(imageArray[currentIndex], heroX, heroY, animationWidth, animationHeight);
     }
+}
+
+function disableButtons() {
+    document.getElementById("nextButton").disabled = true;
+    document.getElementById("prevButton").disabled = true;
 }
 
 getImages();
