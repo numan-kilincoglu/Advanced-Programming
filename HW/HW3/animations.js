@@ -42,14 +42,12 @@ function getImages() {
 }
 
 function start() {
-    console.log("burda1");
     if (stop && pause) {
         stop = false;
         pause = false;
         currentIndex = 0;
         heroX = 0;
         disableButtons();
-        console.log("burda");
         render();
         return;
     }
@@ -59,7 +57,6 @@ function start() {
         heroX = 0;
         pauseAnimation();
         disableButtons();
-        console.log("burda2");
         return;
     }
 
@@ -68,11 +65,9 @@ function start() {
         heroX = 0;
         stopAnimation();
         disableButtons();
-        console.log("burda3");
         render();
         return;
     }
-    console.log("burda4");
     currentIndex = 0;
     heroX = 0;
     disableButtons();
