@@ -14,6 +14,7 @@ let currentIndex = 0;
 let animationLength = 10;
 let pause = false;
 let stop = false;
+const baseURL = 'https://numan-kilincoglu.github.io/Advanced-Programming/HW/HW3/sprites/';
 
 function render() {
     if (!pause && !stop) {
@@ -33,12 +34,19 @@ function updateAnimation() {
     heroX = heroX + animationWidth / 2 > width ? 0 : heroX;
 }
 
-function getImages() {
+
+async function loadImages() {
     for (let index = 0; index < animationLength; index++) {
         image = new Image();
-        image.src = 'https://numan-kilincoglu.github.io/Advanced-Programming/HW/HW3/sprites/' + index.toString() + '.png';
+        image.src = await getImageBlob(index, image);
         imageArray.push(image)
     }
+}
+
+async function getImageBlob(index, image) {
+    return fetch(baseURL + index.toString() + '.png')
+          .then(response => response.blob())
+          .then(imageBlob => image.src = URL.createObjectURL(imageBlob));
 }
 
 function start() {
@@ -112,5 +120,9 @@ function disableButtons() {
     document.getElementById("prevButton").disabled = true;
 }
 
-getImages();
-render();
+async function init() {
+    await loadImages();
+    render();
+}
+
+init();
