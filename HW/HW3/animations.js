@@ -14,6 +14,7 @@ let currentIndex = 0;
 let animationLength = 10;
 let pause = false;
 let stop = false;
+let stopCount = 0;
 const baseURL = 'https://numan-kilincoglu.github.io/Advanced-Programming/HW/HW3/sprites/';
 
 function render() {
@@ -45,8 +46,8 @@ async function loadImages() {
 
 async function getImageBlob(index, image) {
     return fetch(baseURL + index.toString() + '.png')
-          .then(response => response.blob())
-          .then(imageBlob => image.src = URL.createObjectURL(imageBlob));
+        .then(response => response.blob())
+        .then(imageBlob => image.src = URL.createObjectURL(imageBlob));
 }
 
 function start() {
@@ -55,6 +56,7 @@ function start() {
         pause = false;
         currentIndex = 0;
         heroX = 0;
+        stopCount = 0;
         disableButtons();
         render();
         return;
@@ -72,6 +74,16 @@ function start() {
         currentIndex = 0;
         heroX = 0;
         stopAnimation();
+        stopCount = 0;
+        render();
+        return;
+    }
+
+    if (!stop && stopCount == 2) {
+        currentIndex = 0;
+        heroX = 0;
+        stop = false;
+        stopCount = 0;
         disableButtons();
         render();
         return;
@@ -89,6 +101,7 @@ function pauseAnimation() {
 }
 
 function stopAnimation() {
+    stopCount++;
     stop = !stop;
     document.getElementById("nextButton").disabled = !stop;
     document.getElementById("prevButton").disabled = !stop;
