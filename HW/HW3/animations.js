@@ -39,7 +39,7 @@ function updateAnimation() {
 async function loadImages() {
     for (let index = 0; index < animationLength; index++) {
         image = new Image();
-        image.src = await getImageBlob(index, image);
+        await getImageBlob(index, image);
         imageArray.push(image)
     }
 }
