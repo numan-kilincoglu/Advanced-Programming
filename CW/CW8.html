@@ -26,7 +26,7 @@
 
         #map {
             height: 500px;
-            width: 100%;
+            width: 500px;
             margin: 0;
             border: none;
             cursor: crosshair;
@@ -34,8 +34,8 @@
 
         #canvas {
             margin-left: 5px;
+            width: 500px;
             background-color: #99ccff;
-            width: 99%;
             height: 200px;
             display: block;
             margin-top: 30px;
@@ -171,6 +171,7 @@
         const height = canvas.height = 300;
         const width = canvas.width = 600;
         var lat, lon, img;  //global values
+        var accessKey;
         async function askLocation() {
             let name = 'geolocation'
             let result = await navigator.permissions.query({ name })
@@ -193,11 +194,7 @@
             lat = p.coords.latitude; lon = p.coords.longitude;
             askWeather()
         }
-        // Weather
-        var accessKey;
-        var latt, longg;
         async function askWeather() {
-
             let u = "https://api.openweathermap.org/data/2.5/weather?"
                 + "lat=" + lat + "&lon=" + lon + "&APPID=" + accessKey;
             hava.innerText = "getting weather"
@@ -272,7 +269,7 @@
             }
         }
         err.style.display = "none"
-        getAPIkey(); askLocation()
+        getAPIkey(); askLocation();
         mahal.onkeyup = e => {
             let t = e.target
             if (e.keyCode === 13) {
