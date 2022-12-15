@@ -156,11 +156,8 @@
             detay.innerText = ''
             gunes.innerText = ''
             let data = await toJSON(u)
-            //  fetch(u).then(r => r.json()).then(showWeather)
-            // }
-            // function showWeather(data) {
             let w = data.weather[0];
-            showIcon(w.icon)
+            showIcon(w.icon);
             let celsius = convert(data.main.temp).toFixed(0)
             let hh = w.main + "  " + celsius + "°", { sys } = data
             let yy = data.name + ', ' + sys.country
@@ -190,7 +187,7 @@
                 + '\nZone ' + (data.timezone / 3600)
             console.log(hh, yy, 'Wind ' + data.wind.deg + '° ' + WIND[d])
         }
-        async function showIcon(i) {
+        function showIcon(i) {
             const u = "https://openweathermap.org/img/w/"
             icon.src = u + i + ".png"
             document.querySelector('link').href = icon.src;
