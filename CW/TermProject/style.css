@@ -1,0 +1,153 @@
+@import url('https://fonts.cdnfonts.com/css/mont');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #212529;
+}
+
+#line {
+    background-color: white;
+    color: white;
+    size: 5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #20282d;
+    align-items: center;
+    margin: 5px;
+}
+
+.nav-currency {
+    font-family: 'Mont', sans-serif;
+    font-size: 1rem;
+    color: beige;
+}
+
+.nav-lang {
+    font-family: 'Mont', sans-serif;
+    font-size: 1rem;
+    color: beige;
+}
+
+.nav-game {
+    font-family: 'Mont', sans-serif;
+    font-size: 1rem;
+    color: beige;
+}
+
+.nav-name {
+    font-family: 'Mont', sans-serif;
+    font-size: 1rem;
+    color: beige;
+}
+
+/* Navbar Right Section*/
+.nav-right {
+    padding: 0px, 0px, 5px, 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-div {
+    font-family: 'Mont', sans-serif;
+    display: inline-flex;
+    justify-content: space-between;
+    border: solid;
+    border-color: white;
+    border-radius: 4px;
+    border-width: 1px;
+    margin-right: 10px;
+}
+
+.cart-icon {
+    padding-top: 8px;
+    width: 25px;
+    height: 25px;
+}
+
+#cart-size {
+    font-family: 'Mont', sans-serif;
+    font-size: 1rem;
+    color: beige;
+    padding-top: 8px;
+    border-left: 5px solid red;
+    border-color: white;
+    border-width: 1px;
+}
+
+/* Profile icon*/
+.nav-icon {
+    border-radius: 20px;
+    width: 28px;
+    height: 28px;
+}
+
+.top-icon {
+    border-radius: 20px;
+    width: 28px;
+    height: 28px;
+}
+
+.drop-button {
+    background-color: #20282d;
+    border: none;
+}
+
+.dropdown-content {
+    right: 0px;
+    top: 45px;
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    background-color: #30363b;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown {
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    float: none;
+    font-family: 'Mont', sans-serif;
+    font-size: 1rem;
+    color: beige;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Navbar left */
+.nav-left {
+    margin: 0px 0px 0px 25px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #393f47;
+}
