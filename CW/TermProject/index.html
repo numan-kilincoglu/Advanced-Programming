@@ -6,10 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
     <link rel="stylesheet" href="style.css">
-
-
     <title>GameMarket</title>
 </head>
 
@@ -17,45 +16,62 @@
     <nav class="navbar">
         <div class="nav-left">
             <div class="nav-currency">
-                <div class="dropdown">
-                    <div class="nav-icon"><img class="top-icon" src="assets/profile-icon.jpg"></div>
-                    <button class="drop-button"><img style="height: 18px; width: 18px;"
-                            src="assets/down-arrow.png"></button>
-                    <div class="dropdown-content">
-                        <a href="#">Profile</a>
-                        <a href="#">Withdraw</a>
-                        <a href="#">FAQ</a>
-                        <a href="#">Support</a>
-                        <a href="#">Logout</a>
+                <div class="drop-left">
+                    <button class="drop-button"><img id="drop-left-icon" src="assets/eur.PNG">EUR</button>
+                    <div class="drop-left-cntnt">
+                        <a href="#"><img id="drop-left-icon" src="assets/eur.PNG">EUR</a>
+                        <a href="#"><img id="drop-left-icon" src="assets/usd.PNG">USD</a>
+                        <a href="#"><img id="drop-left-icon" src="assets/try.PNG">TRY</a>
                     </div>
                 </div>
             </div>
-            <div class="nav-lang">ENG</div>
-            <div class="nav-game">CS:GO</div>
+            <div class="nav-lang">
+                <div class="drop-left">
+                    <button class="drop-button"><img id="drop-left-icon" src="assets/en.PNG">EN</button>
+                    <div class="drop-left-cntnt">
+                        <a href="#"><img id="drop-left-icon" src="assets/en.PNG">EN</a>
+                        <a href="#"><img id="drop-left-icon" src="assets/tr.PNG">TR</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-game">
+                <div class="drop-left">
+                    <button class="drop-button"><img id="drop-left-icon" src="assets/csgo.jpg">CS:GO</button>
+                    <div class="drop-left-cntnt">
+                        <a href="#"><img id="drop-left-icon" src="assets/csgo.jpg">CS:GO</a>
+                        <a href="#"><img id="drop-left-icon" src="assets/dota.png">DOTA2</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="nav-name">Game Market</div>
 
         <div class="nav-right">
+            <div class="balance-div">
+                <span class="cart-icon"><img src="assets/usd.PNG"></span>
+                <span id="balance-cart">555.4</span>
+            </div>
+            <div>
+                <button id="plus-button"><span>&#43;</span></button>
+            </div>
             <div class="cart-div">
                 <img class="cart-icon" src="assets/cart.png">
-                <span id="cart-size">55</span>
+                <span id="cart-size">0</span>
             </div>
             <div class="dropdown">
                 <div class="nav-icon"><img class="top-icon" src="assets/profile-icon.jpg"></div>
                 <button class="drop-button"><img style="height: 18px; width: 18px;"
                         src="assets/down-arrow.png"></button>
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
-                    <a href="#">Withdraw</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Support</a>
-                    <a href="#">Logout</a>
+                    <a href="#"><img id="dropdown-icon" src="assets/profile.svg">Profile</a>
+                    <a href="#"><img id="dropdown-icon" src="assets/money.svg">Withdraw</a>
+                    <a href="#"><img id="dropdown-icon" src="assets/mail.svg">Support</a>
+                    <a href="#"><img id="dropdown-icon" src="assets/logout.svg">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
-
 
     <script src="script.js"></script>
 </body>
