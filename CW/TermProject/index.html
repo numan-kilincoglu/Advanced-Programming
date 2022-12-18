@@ -94,9 +94,105 @@
             </div>
         </div>
     </nav>
+    <h3 id="h3">Choose Game</h3>
+    <div class="selection-wrapper">
+        <div class="game-selection">
+            <div class="game-wrapper">
+                <button class="select-button">
+                    <img id="icon" src="assets/tf2.jpg">
+                </button>
+                <span class="button-text">TF: 2</span>
+            </div>
+            <div class="game-wrapper">
+                <button class="select-button">
+                    <img id="icon" src="assets/csgo.jpg">
+                </button>
+                <span class="button-text">CS:GO</span>
+            </div>
 
-    <div class="main-layout">
-        <div class="search-bar"></div>
+            <div class="game-wrapper">
+                <button class="select-button">
+                    <img id="icon" src="assets/dota.png">
+                </button>
+                <span class="button-text">DOTA2</span>
+            </div>
+
+            <div class="game-wrapper">
+                <button class="select-button">
+                    <img id="icon" src="assets/rust.png">
+                </button>
+                <span class="button-text">RUST</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-columns">
+        <div class="filter-bar">
+            <div class="filter-text">
+                <div class="filter-left">
+                    <img class="filter-icon" src="assets/filter.svg">
+                    Filters
+                </div>
+                <div>
+                    <img class="filter-icon" src="assets/filter-reset.svg">
+                    Reset
+                </div>
+            </div>
+            <div class="filter-alt-text">
+                Minimum Price
+                <img class="filter-icon" src="assets/filter-price.svg">
+            </div>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="1" class="slider" id="minPrice">
+            </div>
+
+            <input type="text" id="from" name="from" class="custom-textfield">
+
+            <div class="filter-alt-text">
+                Max. Price
+                <img class="filter-icon" src="assets/filter-price.svg">
+            </div>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="1" class="slider" id="maxPrice">
+            </div>
+
+            <input type="text" id="to" name="to" class="custom-textfield">
+
+        </div>
+        <div class="item-main-layout">
+            <div class="header">
+                <div class="header-left">
+                    <img src="assets/search.svg">
+                    <input type="text" name="" placeholder="Search..." class="search">
+                </div>
+                <div class="header-right">
+                    <button class="icon-button">
+                        <span>
+                            <img class="button_icon" src="assets/refresh.svg">
+                        </span>
+                        <span class="button_text">Refresh</span>
+                    </button>
+                    <div class="dropdown">
+                        <button class="drop-button">
+                            <img id="drop-left-icon" src="assets/eur.PNG">
+                            <span class="nav-cur-name" id="nav-cur-span">USD</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#"><img id="drop-left-icon" src="assets/eur.PNG">EUR</a>
+                            <a href="#"><img id="drop-left-icon" src="assets/usd.PNG">USD</a>
+                            <a href="#"><img id="drop-left-icon" src="assets/try.PNG">TRY</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+
+        </div>
+        <div class="footer">
+        </div>
+    </div>
+    </div>
     </div>
 
     <script src="script.js"></script>
