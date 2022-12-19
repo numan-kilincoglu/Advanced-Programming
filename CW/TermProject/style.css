@@ -195,7 +195,7 @@ body {
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #5e6a73;
+    background-color: #737983;
 }
 
 /* Show the dropdown menu on hover */
@@ -243,8 +243,8 @@ body {
 }
 
 .nav-currency .dropdown-content {
-    left: 25px;
-    top: 38px;
+    left: 15px;
+    top: 35px;
     width: 40px;
     min-width: 70px;
 }
@@ -265,8 +265,8 @@ body {
 }
 
 .nav-lang .dropdown-content {
-    left: 95px;
-    top: 38px;
+    left: 85px;
+    top: 35px;
     min-width: 10px;
     max-width: 62px;
 }
@@ -277,8 +277,8 @@ body {
 }
 
 .nav-game .dropdown-content {
-    left: 158px;
-    top: 38px;
+    left: 150px;
+    top: 35px;
     width: 40px;
     min-width: 87px;
 }
@@ -495,23 +495,25 @@ body {
     outline: none;
     border-radius: 2px;
     overflow: hidden;
-    font-family: "Quicksand", sans-serif;
     font-weight: 500;
 }
 
-.button_text,
+.button_text {
+    font-family: 'Mont', sans-serif;
+    color: #fff;
+    font-family: 'Mont', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding-top: 3px;
+    margin-right: 3px;
+}
+
 .button_icon {
-    display: inline-flex;
-    align-items: center;
     color: #fff;
     padding-right: 4px;
     font-size: 0.7rem;
     font-weight: 600;
     height: 14px;
-}
-
-.button_icon {
-    background: rgba(0, 0, 0, 0.08);
 }
 
 .icon-button:active {
@@ -523,4 +525,245 @@ body {
     background-color: #4ddf9a;
     color: white;
     border-radius: 2px;
+}
+
+/*clickable dropdown*/
+/* button */
+.dropbtn {
+    display: flex;
+    height: 20px;
+    padding: 0;
+    background: #212529;
+    border-radius: 2px;
+    font-family: 'Mont', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.click-dropdown {
+    border-left: 2px solid #393f47;
+    margin-left: 5px;
+}
+
+/* dd content */
+.click-dropdown .click-drop-content {
+    right: 15px;
+    position: absolute;
+    top: 155px;
+    background-color: #30363b;
+    min-width: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 100000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.35s ease-out;
+}
+
+.click-drop-content a {
+    color: beige;
+    padding: 12px 16px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    display: block;
+    text-decoration: none;
+    transition: 0.35s ease-out;
+    font-family: 'Mont', sans-serif;
+    font-size: 0.7rem;
+}
+
+.click-drop-content a:hover {
+    background-color: #737983;
+}
+
+/* show dd content */
+.click-dropdown:focus .click-drop-content {
+    outline: none;
+    transform: translateY(20px);
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropbtn:hover,
+.click-dropown:focus .dropbtn {
+    background-color: #691692;
+}
+
+/* mask to close menu by clicking on the button */
+.click-dropdown .db2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+}
+
+.click-dropdown:focus .db2 {
+    display: inline-block;
+}
+
+.click-dropdown .db2:focus .click-drop-content {
+    outline: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.dropbtn .button_icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+}
+
+.icon-button .button_icon {
+    width: 18px;
+    height: 18px;
+
+}
+
+/*clickable dropdown*/
+
+/*card layout*/
+.card-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-gap: 10px;
+    gap: 10px;
+    padding-top: 20px
+}
+
+.item-card {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border-radius: 4px;
+    background: #20282d;
+    overflow: hidden;
+    padding: 5px 8px;
+    transition: .3s
+}
+
+.item-container {
+    height: 100%;
+    display: grid;
+}
+
+.item-top {
+    z-index: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 115px;
+    display: flex;
+    grid-gap: 8px;
+    gap: 8px;
+}
+
+.item-img {
+    width: 100%;
+    max-width: 145px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.item-info-wrapper {
+    position: relative;
+    display: grid;
+    grid-gap: 4px;
+    gap: 4px;
+    align-content: start;
+}
+
+.item-name-wrapper {
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+.item-name {
+    color: #737983;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+}
+
+.item-rarity {
+    padding-top: 2px;
+    color: #eb4b4b;
+    font-family: 'Mont', sans-serif;
+    font-size: 12px;
+}
+
+.item-second-name {
+    padding-top: 2px;
+    color: beige;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+}
+
+.button-wrapper {}
+
+.market-buttons {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 8px;
+    gap: 8px;
+}
+
+.buy-now-button {
+    font-weight: 600;
+    letter-spacing: .01em;
+    font-size: 10px;
+    color: beige;
+    font-family: 'Mont', sans-serif;
+    height: 20px;
+    border: none;
+    border-radius: 2px;
+    white-space: nowrap;
+    padding: 0px;
+    transition: background-color .3s;
+    background-color: #0ad68b;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+.buy-now-button:hover {
+    background-color: #04AA6D;
+}
+
+.add-cart-button {
+    height: 20px;
+    border: none;
+    border-radius: 2px;
+    white-space: nowrap;
+    padding: 0px;
+    background-color: #393f47;
+    transition: background-color .3s;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.add-cart-button:hover{
+    background-color: #858d97;
+}
+
+.add-cart-button #button_ic {
+    height: 14px;
+    width: 14px;
+    padding-top: 2px;
 }
