@@ -183,3 +183,12 @@ function createItems() {
 }
 
 createItems();
+
+function openNav() {
+    document.querySelector("#mySidenav").style.width = "250px";
+    console.log(document.querySelector("#mySidenav").style.display);
+}
+
+function closeNav() {
+    document.querySelector("#mySidenav").style.width = "0px";
+}
