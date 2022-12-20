@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-</html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -14,6 +12,56 @@
 </head>
 
 <body>
+
+    <div id="mobile-filter" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="filter-bar">
+            <div class="filter-text">
+                <div class="filter-left">
+                    <img class="filter-icon" src="assets/filter.svg">
+                    adfFilters
+                </div>
+                <div>
+                    <img class="filter-icon" src="assets/filter-reset.svg">
+                    Reset
+                </div>
+            </div>
+            <div class="filter-alt-text">
+                Minimum Price
+                <img class="filter-icon" src="assets/filter-price.svg">
+            </div>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="1" class="slider" id="minPrice">
+            </div>
+
+            <input type="text" id="from" name="from" class="custom-textfield">
+
+            <div class="filter-alt-text">
+                Max. Price
+                <img class="filter-icon" src="assets/filter-price.svg">
+            </div>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="1" class="slider" id="maxPrice">
+            </div>
+            <input type="text" id="to" name="to" class="custom-textfield">
+        </div>
+    </div>
+
+    <nav class="mobile-navbar">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+
+
     <nav class="navbar">
         <div class="nav-left">
             <div class="nav-currency">
@@ -127,13 +175,7 @@
         </div>
     </div>
 
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
+
     <div id="main-col" class="main-columns">
         <div class="filter-bar">
             <div class="filter-text">
@@ -169,7 +211,12 @@
             <div class="header">
                 <div class="header-left">
                     <div class="filter-left">
-                        <span id="open-mobile-filter" onclick="openNav()">&#9776;Filter</span>
+                        <button class="icon-button" onclick="openNav()">
+                            <span>
+                                <img class="button_icon" src="assets/menu.png">
+                            </span>
+                            <span class="button_text">Refresh</span>
+                        </button>
                     </div>
                     <img src="assets/search.svg">
                     <input type="text" name="" placeholder="Search..." class="search">
@@ -199,12 +246,8 @@
 
                 </div>
             </div>
-            <div class="card-layout">
-
-            </div>
+            <div class="card-layout"></div>
         </div>
-
-
     </div>
     <div class="footer">
     </div>

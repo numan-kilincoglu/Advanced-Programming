@@ -185,10 +185,14 @@ function createItems() {
 createItems();
 
 function openNav() {
-    document.querySelector("#mySidenav").style.width = "250px";
-    console.log(document.querySelector("#mySidenav").style.display);
+    document.querySelector("#mobile-filter").style.width = "250px";
+    console.log(document.querySelector("#mobile-filter").style.display);
 }
 
 function closeNav() {
-    document.querySelector("#mySidenav").style.width = "0px";
+    document.querySelector("#mobile-filter").style.width = "0px";
+}
+
+function toggleMobileMenu(menu) {
+    menu.classList.toggle('open');
 }
