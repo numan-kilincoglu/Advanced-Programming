@@ -791,7 +791,7 @@ body {
     font-size: 10px;
     color: beige;
     font-family: 'Mont', sans-serif;
-    height: 20px;
+    height: 25px;
     border: none;
     border-radius: 2px;
     white-space: nowrap;
@@ -807,7 +807,7 @@ body {
 }
 
 .add-cart-button {
-    height: 20px;
+    height: 25px;
     border: none;
     border-radius: 2px;
     white-space: nowrap;
@@ -1080,8 +1080,8 @@ body {
 
 #mobile-nav .button_icon {
     padding-right: 0px;
-    height: 23px;
-    width: 23px;
+    height: 35px;
+    width: 40px;
 }
 
 .mobile-nav-right {
