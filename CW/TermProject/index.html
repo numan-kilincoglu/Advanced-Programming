@@ -15,16 +15,14 @@
 
     <div id="mobile-filter" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="filter-bar">
+        <div id="mobile-filter-inner">
             <div class="filter-text">
-                <div class="filter-left">
-                    <img class="filter-icon" src="assets/filter.svg">
-                    adfFilters
-                </div>
-                <div>
-                    <img class="filter-icon" src="assets/filter-reset.svg">
-                    Reset
-                </div>
+                <button class="icon-button">
+                    <span>
+                        <img class="button_icon" src="assets/filter-reset.svg">
+                    </span>
+                    <span class="button_text">Reset</span>
+                </button>
             </div>
             <div class="filter-alt-text">
                 Minimum Price
@@ -33,11 +31,10 @@
             <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="1" class="slider" id="minPrice">
             </div>
-
             <input type="text" id="from" name="from" class="custom-textfield">
 
             <div class="filter-alt-text">
-                Max. Price
+                Maximum Price
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
             <div class="slidecontainer">
@@ -45,22 +42,57 @@
             </div>
             <input type="text" id="to" name="to" class="custom-textfield">
         </div>
+
     </div>
 
-    <nav class="mobile-navbar">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Info</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+    <div id="mobile-nav-left" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMobileNav()">&times;</a>
+        <div class="mobile-nav-header">GameMarket</div>
+        <div id="mobile-nav-inner">
+            <div class="mobile-inner">
+                <img id="dropdown-icon" src="assets/profile.svg">
+                <span class="drop-span">Profile</span>
+            </div>
+            <div class="mobile-inner">
+                <img id="dropdown-icon" src="assets/money.svg">
+                <span class="drop-span">Withdraw</span>
+            </div>
+            <div class="mobile-inner">
+                <img id="dropdown-icon" src="assets/mail.svg">
+                <span class="drop-span">Support</span>
+            </div>
+            <div class="mobile-inner">
+                <img id="dropdown-icon" src="assets/logout.svg">
+                <span class="drop-span">Logout</span>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="divider"></div>
+            <div class="trade-mark">
+                <span>Copyright© 2022</span>
+            </div>
+        </div>
+        </a>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-navbar">
+        <button class="icon-button" onclick="openMobileNav()">
+            <span>
+                <img class="button_icon" src="assets/menu.png">
+            </span>
+        </button>
+        <div class="mobile-nav-right">
+            <div class="balance-div">
+                <span class="cart-icon"><img src="assets/usd.PNG"></span>
+                <span id="balance-cart">555.4</span>
+            </div>
+            <div>
+                <button id="plus-button"><span>&#43;</span></button>
+            </div>
+            <div class="nav-icon">
+                <img class="top-icon" src="assets/profile-icon.jpg">
+            </div>
+        </div>
     </nav>
-
-
 
     <nav class="navbar">
         <div class="nav-left">
@@ -89,18 +121,7 @@
                     </div>
                 </div>
             </div>
-            <div class="nav-game">
-                <div class="dropdown">
-                    <button class="drop-button">
-                        <img id="drop-left-icon" src="assets/csgo.jpg">
-                        <span class="nav-game-name" id="nav-game-span">CS:GO</span>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#"><img id="drop-left-icon" src="assets/csgo.jpg">CS:GO</a>
-                        <a href="#"><img id="drop-left-icon" src="assets/dota.png">DOTA2</a>
-                    </div>
-                </div>
-            </div>
+            <div></div>
         </div>
 
         <div class="nav-name">Game Market</div>
@@ -179,13 +200,23 @@
     <div id="main-col" class="main-columns">
         <div class="filter-bar">
             <div class="filter-text">
-                <div class="filter-left">
-                    <img class="filter-icon" src="assets/filter.svg">
-                    Filters
-                </div>
+                <button class="icon-button">
+                    <span>
+                        <img class="button_icon" src="assets/filter.png">
+                    </span>
+                    <span class="button_text">Filter</span>
+                </button>
+                <div></div>
+                <div></div>
+                <button class="icon-button">
+                    <span>
+                        <img class="button_icon" src="assets/filter-reset.svg">
+                    </span>
+                    <span class="button_text">Reset</span>
+                </button>
+
                 <div>
-                    <img class="filter-icon" src="assets/filter-reset.svg">
-                    Reset
+
                 </div>
             </div>
             <div class="filter-alt-text">
@@ -213,13 +244,15 @@
                     <div class="filter-left">
                         <button class="icon-button" onclick="openNav()">
                             <span>
-                                <img class="button_icon" src="assets/menu.png">
+                                <img class="button_icon" src="assets/filter.png">
                             </span>
-                            <span class="button_text">Refresh</span>
+                            <span class="button_text">Filter</span>
                         </button>
                     </div>
-                    <img src="assets/search.svg">
-                    <input type="text" name="" placeholder="Search..." class="search">
+                    <div class="search-div">
+                        <img src="assets/search.svg">
+                        <input type="text" name="" placeholder="Search..." class="search">
+                    </div>
                 </div>
                 <div class="header-right">
                     <button class="icon-button">
@@ -228,7 +261,6 @@
                         </span>
                         <span class="button_text">Refresh</span>
                     </button>
-
                     <div class="click-dropdown" tabindex="1">
                         <a class="dropbtn">
                             <span>
@@ -243,8 +275,12 @@
                             <a href="#">Descending</a>
                         </div>
                     </div>
-
                 </div>
+
+            </div>
+            <div id="mobile-search" class="mobile-search-div">
+                <img style="height: 14px; width: 14px;" src="assets/search.svg">
+                <input id="mobile-search-input" type="text" name="" placeholder="Search..." class="search">
             </div>
             <div class="card-layout"></div>
         </div>
@@ -254,7 +290,6 @@
     </div>
     </div>
     </div>
-
     <script src="script.js"></script>
 
 </body>

@@ -5,7 +5,7 @@ const itemArray =
             name: "M9 Bayonet",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1300 $",
+            price: 1300,
             img: "assets/itemImages/bayonet-doppler.png",
         },
         {
@@ -13,7 +13,7 @@ const itemArray =
             name: "AWP Dragon Lore",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1400 $",
+            price: 1400,
             img: "assets/itemImages/dragon-lore.png",
         },
         {
@@ -21,7 +21,7 @@ const itemArray =
             name: "M4A4",
             secondName: "Howl",
             rarity: "Covert",
-            price: "131100 $",
+            price: 131100,
             img: "assets/itemImages/howl.png",
         },
         {
@@ -29,7 +29,7 @@ const itemArray =
             name: "M9 Bayonet",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1300 $",
+            price: 1300,
             img: "assets/itemImages/bayonet-doppler.png",
         },
         {
@@ -37,7 +37,7 @@ const itemArray =
             name: "AWP Dragon Lore",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1400 $",
+            price: 1400,
             img: "assets/itemImages/dragon-lore.png",
         },
         {
@@ -45,7 +45,7 @@ const itemArray =
             name: "M4A4",
             secondName: "Howl",
             rarity: "Covert",
-            price: "131100 $",
+            price: 131100,
             img: "assets/itemImages/howl.png",
         },
         {
@@ -53,7 +53,7 @@ const itemArray =
             name: "M9 Bayonet",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1300 $",
+            price: 1300,
             img: "assets/itemImages/bayonet-doppler.png",
         },
         {
@@ -61,7 +61,7 @@ const itemArray =
             name: "AWP Dragon Lore",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1400 $",
+            price: 1400,
             img: "assets/itemImages/dragon-lore.png",
         },
         {
@@ -69,7 +69,7 @@ const itemArray =
             name: "M4A4",
             secondName: "Howl",
             rarity: "Covert",
-            price: "131100 $",
+            price: 131100,
             img: "assets/itemImages/howl.png",
         },
         {
@@ -77,7 +77,7 @@ const itemArray =
             name: "M9 Bayonet",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1300 $",
+            price: 1300,
             img: "assets/itemImages/bayonet-doppler.png",
         },
         {
@@ -85,7 +85,7 @@ const itemArray =
             name: "AWP Dragon Lore",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1400 $",
+            price: 1400,
             img: "assets/itemImages/dragon-lore.png",
         },
         {
@@ -93,7 +93,7 @@ const itemArray =
             name: "M4A4",
             secondName: "Howl",
             rarity: "Covert",
-            price: "131100 $",
+            price: 131100,
             img: "assets/itemImages/howl.png",
         },
         {
@@ -101,7 +101,7 @@ const itemArray =
             name: "M9 Bayonet",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1300 $",
+            price: 1300,
             img: "assets/itemImages/bayonet-doppler.png",
         },
         {
@@ -109,7 +109,7 @@ const itemArray =
             name: "AWP Dragon Lore",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1400 $",
+            price: 1400,
             img: "assets/itemImages/dragon-lore.png",
         },
         {
@@ -117,7 +117,7 @@ const itemArray =
             name: "M4A4",
             secondName: "Howl",
             rarity: "Covert",
-            price: "131100 $",
+            price: 131100,
             img: "assets/itemImages/howl.png",
         },
         {
@@ -125,7 +125,7 @@ const itemArray =
             name: "M9 Bayonet",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1300 $",
+            price: 1300,
             img: "assets/itemImages/bayonet-doppler.png",
         },
         {
@@ -133,7 +133,7 @@ const itemArray =
             name: "AWP Dragon Lore",
             secondName: "Doppler",
             rarity: "Covert",
-            price: "1400 $",
+            price: 1400,
             img: "assets/itemImages/dragon-lore.png",
         },
         {
@@ -141,7 +141,7 @@ const itemArray =
             name: "M4A4",
             secondName: "Howl",
             rarity: "Covert",
-            price: "131100 $",
+            price: 131100,
             img: "assets/itemImages/howl.png",
         },
 
@@ -158,7 +158,7 @@ function createItems() {
                         <div class="item-top">FN</div>
                         <div class="image-wrapper">
                             <div class="image">
-                                <img class="item-img" src=${item.img}">
+                                <img class="item-img" src="${item.img}">
                             </div>
                         </div>
                         <div class="item-info-wrapper">
@@ -166,6 +166,7 @@ function createItems() {
                                 <div class="item-name">${item.name}</div>
                                 <div class="item-second-name">${item.secondName}</div>
                                 <div class="item-rarity">${item.rarity}</div>
+                                <div class="item-price"><span>$ </span>${item.price}</div>
                             </div>
                         </div>
                         <div class="button-wrapper">
@@ -185,14 +186,17 @@ function createItems() {
 createItems();
 
 function openNav() {
-    document.querySelector("#mobile-filter").style.width = "250px";
-    console.log(document.querySelector("#mobile-filter").style.display);
+    document.querySelector("#mobile-filter").style.width = "70%";
 }
 
 function closeNav() {
     document.querySelector("#mobile-filter").style.width = "0px";
 }
 
-function toggleMobileMenu(menu) {
-    menu.classList.toggle('open');
+function openMobileNav() {
+    document.getElementById("mobile-nav-left").style.width = "100%";
+}
+
+function closeMobileNav() {
+    document.getElementById("mobile-nav-left").style.width = "0";
 }
