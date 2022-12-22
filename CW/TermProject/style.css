@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/mont');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
     box-sizing: border-box;
@@ -492,7 +492,7 @@ body {
     background-color: #5e656f;
     color: #eef0f2;
     font-family: 'Mont', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     border: none;
     border-radius: 1px;
     width: 30%;
@@ -926,7 +926,7 @@ body {
         border: 1.8px solid #393f47;
         border-radius: 5px;
         height: 60px;
-        width: 80%;
+        width: 96%;
     }
 }
 
@@ -958,6 +958,18 @@ body {
     color: beige;
     font-family: 'Mont', sans-serif;
     font-size: 13px;
+}
+
+#mobile-filter-inner .filter-text{
+    justify-content: space-between;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'Mont', sans-serif;
+    font-size: 0.7rem;
+    border-bottom: 1.8px solid #393f47;
 }
 
 #mobile-filter-inner .filter-alt-text {
@@ -1071,11 +1083,10 @@ body {
 
 #mobile-nav .icon-button {
     justify-content: center;
-    height: 25px;
+    height: 30px;
     width: 30px;
     margin-left: 15px;
     margin-top: 10px;
-    border: 1.5px solid #393f47;
 }
 
 #mobile-nav .button_icon {

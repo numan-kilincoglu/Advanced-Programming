@@ -16,7 +16,13 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div id="mobile-filter-inner">
             <div class="filter-text">
-                <button class="icon-button">
+                <button class="icon-button" onclick="filterByPrice()">
+                    <span>
+                        <img class="button_icon" src="assets/filter.png">
+                    </span>
+                    <span class="button_text">Filter</span>
+                </button>
+                <button class="icon-button" onclick="mobileResetFilter()">
                     <span>
                         <img class="button_icon" src="assets/filter-reset.svg">
                     </span>
@@ -28,18 +34,18 @@
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="1" class="slider" id="minPrice">
+                <input type="range" min="0" max="9000" value="1" class="slider" id="minPrice">
             </div>
-            <input type="text" id="from" name="from" class="custom-textfield">
+            <input type="text" id="mobileFrom" name="from" class="custom-textfield" disabled>
 
             <div class="filter-alt-text">
                 Maximum Price
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="1" class="slider" id="maxPrice">
+                <input type="range" min="0" max="9000" value="1" class="slider" id="maxPrice">
             </div>
-            <input type="text" id="to" name="to" class="custom-textfield">
+            <input type="text" id="mobileTo" name="to" class="custom-textfield" disabled>
         </div>
 
     </div>
@@ -140,7 +146,7 @@
             <div class="dropdown">
                 <div class="nav-icon"><img class="top-icon" src="assets/profile-icon.jpg"></div>
                 <button class="drop-button">
-                    <img style="height: 15px; width: 15px;" src="assets/down-arrow.png">
+                    <img style="height: 20px; width: 20px;" src="assets/down-arrow.png">
                 </button>
                 <div class="dropdown-content">
                     <a href="#">
@@ -167,27 +173,27 @@
     <div class="selection-wrapper">
         <div class="game-selection">
             <div class="game-wrapper">
-                <button class="select-button">
+                <button class="select-button" onclick="chooseGame(0)">
                     <img id="icon" src="assets/tf2.jpg">
                 </button>
                 <span class="button-text">TF: 2</span>
             </div>
             <div class="game-wrapper">
-                <button class="select-button">
+                <button class="select-button" onclick="chooseGame(1)">
                     <img id="icon" src="assets/csgo.jpg">
                 </button>
                 <span class="button-text">CS:GO</span>
             </div>
 
             <div class="game-wrapper">
-                <button class="select-button">
+                <button class="select-button" onclick="chooseGame(2)">
                     <img id="icon" src="assets/dota.png">
                 </button>
                 <span class="button-text">DOTA2</span>
             </div>
 
             <div class="game-wrapper">
-                <button class="select-button">
+                <button class="select-button" onclick="chooseGame(3)">
                     <img id="icon" src="assets/rust.png">
                 </button>
                 <span class="button-text">RUST</span>
@@ -199,7 +205,7 @@
     <div id="main-col" class="main-columns">
         <div class="filter-bar">
             <div class="filter-text">
-                <button class="icon-button">
+                <button class="icon-button" onclick="filterByPrice()">
                     <span>
                         <img class="button_icon" src="assets/filter.png">
                     </span>
@@ -207,15 +213,13 @@
                 </button>
                 <div></div>
                 <div></div>
-                <button class="icon-button">
+                <button class="icon-button" onclick="mainResetFilters()">
                     <span>
                         <img class="button_icon" src="assets/filter-reset.svg">
                     </span>
                     <span class="button_text">Reset</span>
                 </button>
-
                 <div>
-
                 </div>
             </div>
             <div class="filter-alt-text">
@@ -223,19 +227,19 @@
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="1" class="slider" id="minPrice">
+                <input type="range" min="0" max="9000" value="1" class="slider" id="minPrice">
             </div>
 
-            <input type="text" id="from" name="from" class="custom-textfield">
+            <input type="text" id="from" name="from" class="custom-textfield" disabled>
 
             <div class="filter-alt-text">
                 Max. Price
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
             <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="1" class="slider" id="maxPrice">
+                <input type="range" min="0" max="9000" value="1" class="slider" id="maxPrice">
             </div>
-            <input type="text" id="to" name="to" class="custom-textfield">
+            <input type="text" id="to" name="to" class="custom-textfield" disabled>
         </div>
         <div class="item-main-layout">
             <div class="header">
@@ -250,7 +254,7 @@
                     </div>
                     <div class="search-div">
                         <img src="assets/search.svg">
-                        <input type="text" name="" placeholder="Search..." class="search">
+                        <input type="text" name="" placeholder="Search..." class="search" onkeyup=searchItem(this)>
                     </div>
                 </div>
                 <div class="header-right">
@@ -266,12 +270,12 @@
                                 <img class="button_icon" src="assets/sort.svg">
                             </span>
                             <span class="button_text">Price</span>
-                            <img class="button_icon" id="sortPrice" src="assets/arrow-up.svg">
+                            <img class="button_icon" id="sortPrice" src="assets/up.png">
                         </a>
                         <i class="db2" tabindex="1"></i>
                         <div class="click-drop-content">
-                            <a href="#">Ascending</a>
-                            <a href="#">Descending</a>
+                            <a onclick="sortTabIcon('asc')" href="#">Ascending</a>
+                            <a onclick="sortTabIcon('desc')" href="#">Descending</a>
                         </div>
                     </div>
                 </div>
@@ -279,7 +283,8 @@
             </div>
             <div id="mobile-search" class="mobile-search-div">
                 <img style="height: 14px; width: 14px;" src="assets/search.svg">
-                <input id="mobile-search-input" type="text" name="" placeholder="Search..." class="search">
+                <input id="mobile-search-input" type="text" name="" placeholder="Search..." class="search"
+                    onkeyup=searchItem(this)>
             </div>
             <div class="card-layout"></div>
         </div>
