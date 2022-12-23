@@ -160,12 +160,19 @@ body {
     border-right: 1px solid #393f47;
 }
 
-#balance-cart {
+#desk-balance {
     font-family: 'Mont', sans-serif;
     font-size: 0.85rem;
     color: beige;
     padding-top: 9px;
 }
+#mobile-balance {
+    font-family: 'Mont', sans-serif;
+    font-size: 0.85rem;
+    color: beige;
+    padding-top: 9px;
+}
+
 
 /* Profile icon*/
 .nav-icon {

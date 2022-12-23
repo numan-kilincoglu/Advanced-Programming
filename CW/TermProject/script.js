@@ -257,6 +257,8 @@ const itemArray =
 
     ];
 
+let cartArray = [];
+
 function createItems() {
     var div = document.querySelector("#main-col .card-layout");
     div.innerHTML = '';
@@ -320,46 +322,6 @@ function cardItem(img, name, secondName, rarity, price, id) {
     </div>
 `
 }
-
-function addTocart(trigger_element) {
-    var clicked_element = trigger_element
-    console.log(trigger_element,clicked_element.id + "Was clicked!!!");
-}
-
-function myFun(trigger_element)
-{
-    // Get your element:
-
-}
-
-function getItem(itemId) {
-    return itemArray.filter(item => item.id == itemId);
-}
-
-function addCart1(itemId) {
-
-    
-    let item = getItem(itemId);
-    var div = document.querySelector("#cart-grid-div");
-    div.innerHTML = '';
-    div.innerHTML += `<div id="desk-cart-item">
-                        <div id="desk-item-img-container">
-                            <img class="item-img" src="${item.img}">
-                        </div>
-                        <div id="desk-cart-item-wrapper">
-                            <div id="item-info-div">
-                                <div class="item-name">${item.name}</div>
-                                <div class="item-second-name">${item.secondName}</div>
-                                <div class="item-rarity">${item.rarity}</div>
-                            </div>
-                        </div>
-                        <div id="item-price-div">
-                            <div class="item-price"><span>$ </span>${item.price}</div>
-                        </div>
-                    </div>`;
-
-}
-
 
 function openNav() {
     document.querySelector("#mobile-filter").style.width = "70%";
@@ -430,6 +392,7 @@ function initialValues() {
     document.querySelector("#to").value = 0;
     document.querySelector("#mobileFrom").value = 0;
     document.querySelector("#mobileTo").value = 0;
+    localStorage.setItem("balance", 12500);
 }
 
 function chooseGame(type) {
@@ -532,12 +495,132 @@ function modalEvents() {
     }
 }
 
-function buttonEvents(){
-    
+function addCartEvents() {
+    let buttons = document.querySelectorAll(".add-cart-button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', () => {
+            totalCost(itemArray[i]);
+            updateCartSize();
+        });
+    }
 }
 
+function updateCartSize() {
+    let div = document.querySelector("#cart-size");
+    let num = localStorage.getItem('cartSize');
+    let parsed = parseInt(num);
+    if (num == null) {
+        localStorage.setItem('cartSize', 1);
+        div.innerHTML = 1;
+        return;
+    }
+    localStorage.setItem('cartSize', parsed + 1);
+    div.innerHTML = parsed + 1;
+}
+
+function addTocart(trigger_element) {
+    var clicked_element = trigger_element;
+    addart(clicked_element.id);
+}
+
+function myFun(trigger_element) {
+    // Get your element:
+
+}
+
+function getItem(itemId) {
+    return itemArray.filter(item => item.id == itemId);
+}
+
+function addCart(itemId) {
+    item = getItem(itemId);
+    addToLocalStorage(itemId);
+    var cardDiv = document.querySelector("#cart-grid-div");
+    cardDiv.innerHTML += `<div id="desk-cart-item">
+                        <div id="desk-item-img-container">
+                            <img class="item-img" src="${item.img}">
+                        </div>
+                        <div id="desk-cart-item-wrapper">
+                            <div id="item-info-div">
+                                <div class="item-name">${item.name}</div>
+                                <div class="item-second-name">${item.secondName}</div>
+                                <div class="item-rarity">${item.rarity}</div>
+                            </div>
+                        </div>
+                        <div id="item-price-div">
+                            <div class="item-price"><span>$ </span>${item.price}</div>
+                        </div>
+                    </div>`;
+
+}
+
+function addToLocalStorage(itemId) {
+    if (localStorage.getItem("cartSize") == null) {
+    } else {
+        cartArray = JSON.parse(localStorage.getItem("cartItemId"));
+        cartArray.push(itemId);
+        localStorage.setItem("cartItemId", JSON.stringify(cartArray))
+    }
+}
+
+function getItemsInCart() {
+
+}
+
+function totalCost(item) {
+    let sum = localStorage.getItem('totalCost');
+    let parsed = parseInt(sum);
+    if (sum == null) {
+        localStorage.setItem('totalCost', item.price);
+        return;
+    }
+    localStorage.setItem('totalCost', parsed + item.price);
+}
+
+function getCartSize() {
+    let div = document.querySelector("#cart-size");
+    let num = localStorage.getItem('cartSize');
+    if (num == null) {
+        div.innerHTML = 0;
+    } else {
+        div.innerHTML = parseInt(num);
+    }
+}
+
+function getTotalCost() {
+    let div = document.querySelector("#cart-total");
+    let sum = localStorage.getItem('totalCost');
+    if (sum == null) {
+        div.innerHTML = sum;
+        return;
+    }
+    div.innerHTML = sum + " $";
+    div.style.color = "#4CAF50";
+}
+
+function getTotalBalance() {
+    let div = document.querySelector("#desk-balance");
+    let mobileDiv = document.querySelector("#mobile-balance");
+    let sum = localStorage.getItem('balance');
+    console.log(sum);
+    if (sum == null) {
+        div.innerText = 0;
+        mobileDiv.innerText = 0;
+        return;
+    }
+    div.innerText = sum;
+    mobileDiv.innerText = sum;
+}
 
 initialValues();
 filterEventListeners();
 createItems();
 modalEvents();
+addCartEvents();
+getCartSize();
+getTotalCost();
+getTotalBalance();
+//getCartItems();
+
+//getItemsInCart();
+
