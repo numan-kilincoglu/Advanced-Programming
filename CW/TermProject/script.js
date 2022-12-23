@@ -272,7 +272,7 @@ function filterItemName(type) {
     itemArray.filter(item => item.game == type)
         .forEach(item => {
             div.innerHTML = div.innerHTML
-                + cardItem(item.img, item.name, item.secondName, item.rarity, item.price);
+                + cardItem(item.img, item.name, item.secondName, item.rarity, item.price, item.id);
         });
 }
 
@@ -305,13 +305,13 @@ function cardItem(img, name, secondName, rarity, price, id) {
                     <div class="item-second-name">${secondName}</div>
                     <div class="item-rarity">${rarity}</div>
                     <div class="item-price"><span>$ </span>${price}</div>
-                    <div id="item-id" style="display: none;">${id}</div>
+                    <div class="item-id" style="display: none;">${id}</div>
                 </div>
             </div>
             <div class="button-wrapper">
             <div class="market-buttons">
                 <button class="buy-now-button">Buy Now</button>
-                <button id="ab" class="add-cart-button" data-id-clicked="${id}">
+                <button id=${id} class="add-cart-button" onclick="addTocart(this)">
                     <img id="button_ic" src="assets/cart.png">
                 </button>
             </div>
@@ -321,7 +321,16 @@ function cardItem(img, name, secondName, rarity, price, id) {
 `
 }
 
+function addTocart(trigger_element) {
+    var clicked_element = trigger_element
+    console.log(trigger_element,clicked_element.id + "Was clicked!!!");
+}
 
+function myFun(trigger_element)
+{
+    // Get your element:
+
+}
 
 function getItem(itemId) {
     return itemArray.filter(item => item.id == itemId);
@@ -329,7 +338,7 @@ function getItem(itemId) {
 
 function addCart1(itemId) {
 
-    console.log(document.querySelector("#item-id").value);
+    
     let item = getItem(itemId);
     var div = document.querySelector("#cart-grid-div");
     div.innerHTML = '';
@@ -454,10 +463,6 @@ function searchItem(e) {
         });
 }
 
-function sortItems() {
-
-}
-
 function sortTabIcon(sort) {
     let sortedArray = [...itemArray];
     let icon = document.querySelector("#sortPrice");
@@ -519,12 +524,16 @@ function modalEvents() {
     span.onclick = function () {
         modal.style.display = "none";
     }
-    
+
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
+}
+
+function buttonEvents(){
+    
 }
 
 
