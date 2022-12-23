@@ -99,37 +99,72 @@
         </div>
     </nav>
 
+    <!-- Desktop Card Modal -->
+    <div id="deskModal" class="modal">
+        <!-- Modal content -->
+        <div class="desk-modal-content">
+            <div id="desk-header">
+                <span id="desk-cart-head">Items In Cart</span>
+                <span class="close">&times;</span>
+            </div>
+            <div id="desk-cart-inner">
+                <div id="cart-grid-div">
+
+                </div>
+            </div>
+            <div id="desk-cart-footer">
+                <div id="desk-footer-wrap">
+                    <div id="desk-footer-bar">
+                        <div id="desk-footer-left">
+                            <span>Total: </span>
+                            <span id="cart-total"></span>
+                        </div>
+                        <div id="desk-footer-right">
+                            <button id="clear-button" class="cust-button">Clear All</button>
+                            <button id="purchase-button" class="cust-button">Purchase</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="icon-button" onclick="mainResetFilters()">
+                    <span>
+                        <img class="button_icon" src="assets/filter-reset.svg">
+                    </span>
+                    <span class="button_text">Reset</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
     <nav class="navbar">
         <div class="nav-left">
+            <div class="nav-name">Game Market</div>
             <div class="nav-currency">
                 <div class="dropdown">
-                    <button class="drop-button">
+                    <button id="currency-button" class="drop-button">
                         <img id="drop-left-icon" src="assets/eur.PNG">
                         <span class="nav-cur-name" id="nav-cur-span">USD</span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="#"><img id="drop-left-icon" src="assets/eur.PNG">EUR</a>
-                        <a href="#"><img id="drop-left-icon" src="assets/usd.PNG">USD</a>
-                        <a href="#"><img id="drop-left-icon" src="assets/try.PNG">TRY</a>
+                        <a id="eur" onclick="changeCurrency(0)"><img id="drop-left-icon" src="assets/eur.PNG">EUR</a>
+                        <a id="usd" onclick="changeCurrency(1)"><img id="drop-left-icon" src="assets/usd.PNG">USD</a>
+                        <a id="try" onclick="changeCurrency(2)"><img id="drop-left-icon" src="assets/try.PNG">TRY</a>
                     </div>
                 </div>
             </div>
             <div class="nav-lang">
                 <div class="dropdown">
-                    <button class="drop-button">
+                    <button class="drop-button" id="lang-button">
                         <img id="drop-left-icon" src="assets/flag-en.png">
                         <span class="nav-lang-name" id="nav-lang-span">EN</span>
                     </button>
                     <div class="dropdown-content">
-                        <a href="#"><img id="drop-left-icon" src="assets/flag-en.png">EN</a>
-                        <a href="#"><img id="drop-left-icon" src="assets/flag-tr.png">TR</a>
+                        <a id="en" onclick="changeLang(0)"><img id="drop-left-icon" src="assets/flag-en.png">EN</a>
+                        <a id="tr" onclick="changeLang(1)"><img id="drop-left-icon" src="assets/flag-tr.png">TR</a>
                     </div>
                 </div>
             </div>
-            <div></div>
         </div>
-
-        <div class="nav-name">Game Market</div>
 
         <div class="nav-right">
             <div class="balance-div">
@@ -139,7 +174,7 @@
             <div>
                 <button id="plus-button"><span>&#43;</span></button>
             </div>
-            <div class="cart-div">
+            <div class="cart-div" id="cart-button">
                 <img class="cart-icon" src="assets/cart.png">
                 <span id="cart-size">55</span>
             </div>
@@ -258,7 +293,7 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <button class="icon-button">
+                    <button class="icon-button" onclick="createItems()">
                         <span>
                             <img class="button_icon" src="assets/refresh.svg">
                         </span>
@@ -286,7 +321,7 @@
                 <input id="mobile-search-input" type="text" name="" placeholder="Search..." class="search"
                     onkeyup=searchItem(this)>
             </div>
-            <div class="card-layout"></div>
+            <div class="card-layout" ></div>
         </div>
     </div>
     <div class="footer">

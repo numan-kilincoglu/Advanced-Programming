@@ -1,4 +1,6 @@
 let gameType = "csgo";
+let currency = "usd";
+let lang = "en";
 let minPrice = 0;
 let maxPrice = 0;
 
@@ -260,7 +262,7 @@ function createItems() {
     div.innerHTML = '';
     itemArray.forEach(item => {
         div.innerHTML = div.innerHTML
-            + cardItem(item.img, item.name, item.secondName, item.rarity, item.price);
+            + cardItem(item.img, item.name, item.secondName, item.rarity, item.price, item.id);
     });
 }
 
@@ -287,7 +289,7 @@ function filterByPrice() {
     }
 }
 
-function cardItem(img, name, secondName, rarity, price) {
+function cardItem(img, name, secondName, rarity, price, id) {
     return `
     <div class="item-card">
         <div class="item-container">
@@ -303,19 +305,50 @@ function cardItem(img, name, secondName, rarity, price) {
                     <div class="item-second-name">${secondName}</div>
                     <div class="item-rarity">${rarity}</div>
                     <div class="item-price"><span>$ </span>${price}</div>
+                    <div id="item-id" style="display: none;">${id}</div>
                 </div>
             </div>
             <div class="button-wrapper">
-                <div class="market-buttons">
-                    <button class="buy-now-button">Buy Now</button>
-                    <button class="add-cart-button">
-                        <img id="button_ic" src="assets/cart.png">
-                    </button>
-                </div>
+            <div class="market-buttons">
+                <button class="buy-now-button">Buy Now</button>
+                <button id="ab" class="add-cart-button" data-id-clicked="${id}">
+                    <img id="button_ic" src="assets/cart.png">
+                </button>
             </div>
+        </div>
         </div>
     </div>
 `
+}
+
+
+
+function getItem(itemId) {
+    return itemArray.filter(item => item.id == itemId);
+}
+
+function addCart1(itemId) {
+
+    console.log(document.querySelector("#item-id").value);
+    let item = getItem(itemId);
+    var div = document.querySelector("#cart-grid-div");
+    div.innerHTML = '';
+    div.innerHTML += `<div id="desk-cart-item">
+                        <div id="desk-item-img-container">
+                            <img class="item-img" src="${item.img}">
+                        </div>
+                        <div id="desk-cart-item-wrapper">
+                            <div id="item-info-div">
+                                <div class="item-name">${item.name}</div>
+                                <div class="item-second-name">${item.secondName}</div>
+                                <div class="item-rarity">${item.rarity}</div>
+                            </div>
+                        </div>
+                        <div id="item-price-div">
+                            <div class="item-price"><span>$ </span>${item.price}</div>
+                        </div>
+                    </div>`;
+
 }
 
 
@@ -439,12 +472,63 @@ function sortTabIcon(sort) {
         sortedArray.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
     }
     sortedArray.filter(e => e.game == gameType)
-    .forEach(item => {
-        div.innerHTML = div.innerHTML
-            + cardItem(item.img, item.name, item.secondName, item.rarity, item.price);
-    });
+        .forEach(item => {
+            div.innerHTML = div.innerHTML
+                + cardItem(item.img, item.name, item.secondName, item.rarity, item.price);
+        });
 }
+
+function changeCurrency(cur) {
+    let icon = document.querySelector("#currency-button #drop-left-icon");
+    if (cur == 0) {
+        currency = "eur";
+        icon.src = "assets/eur.PNG"
+    }
+    if (cur == 1) {
+        currency = "usd";
+        icon.src = "assets/usd.PNG"
+    }
+    if (cur == 2) {
+        currency = "try";
+        icon.src = "assets/try.PNG"
+    }
+}
+
+function changeLang(lang) {
+    let icon = document.querySelector("#lang-button #drop-left-icon");
+    if (lang == 0) {
+        lang = "en";
+        icon.src = "assets/flag-en.PNG"
+    }
+    if (lang == 1) {
+        lang = "tr";
+        icon.src = "assets/flag-tr.PNG"
+    }
+
+}
+
+function modalEvents() {
+    var modal = document.getElementById("deskModal");
+    var btn = document.querySelector("#cart-button");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
 
 initialValues();
 filterEventListeners();
 createItems();
+modalEvents();

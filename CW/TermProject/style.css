@@ -97,12 +97,12 @@ body {
 }
 
 .nav-name {
-    margin-left: 25px;
     font-family: 'Mont', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
     margin-left: 4px;
     margin-right: 4px;
+    margin-top: 4px;
     color: beige;
 }
 
@@ -202,7 +202,7 @@ body {
 }
 
 .dropdown {
-    padding-top: 3px;
+    padding-top: 1px;
     padding-left: 6px;
     border-radius: 5px;
     display: flex;
@@ -212,7 +212,7 @@ body {
 
 .dropdown-content {
     right: 0px;
-    top: 36px;
+    top: 35px;
     border-radius: 5px;
     display: none;
     position: absolute;
@@ -279,6 +279,10 @@ body {
     left: -2px;
 }
 
+#currency-button {
+    border-left: 1.5px solid #393f47;
+}
+
 .drop-button #drop-left-icon {
     width: 22px;
     height: 22px;
@@ -286,8 +290,8 @@ body {
 }
 
 .nav-currency .dropdown-content {
-    left: 15px;
-    top: 35px;
+    left: 165px;
+    top: 30px;
     width: 40px;
     min-width: 70px;
 }
@@ -299,8 +303,8 @@ body {
 
 
 .nav-lang .dropdown-content {
-    left: 85px;
-    top: 35px;
+    left: 225px;
+    top: 30px;
     min-width: 10px;
     max-width: 62px;
 }
@@ -608,7 +612,7 @@ body {
 .click-dropdown .click-drop-content {
     right: 15px;
     position: absolute;
-    top: 155px;
+    top: 165px;
     background-color: #30363b;
     min-width: 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -960,7 +964,7 @@ body {
     font-size: 13px;
 }
 
-#mobile-filter-inner .filter-text{
+#mobile-filter-inner .filter-text {
     justify-content: space-between;
     display: flex;
     padding-top: 10px;
@@ -1071,6 +1075,11 @@ body {
     .mobile-navbar {
         display: block;
     }
+
+    .click-dropdown .click-drop-content {
+        position: absolute;
+        top: 175px;
+    }
 }
 
 .mobile-navbar {
@@ -1110,4 +1119,179 @@ body {
 #mobile-nav .balance-div {
     margin-right: 25px;
     padding-bottom: 5px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+.desk-modal-content {
+    border-radius: 2px;
+    background-color: #fefefe;
+    margin: 15% auto;
+    width: 80%;
+    height: 50%;
+}
+
+
+
+#desk-header {
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #20282d;
+    height: 20%;
+}
+
+#desk-cart-head {
+    margin-left: 15px;
+    color: beige;
+    font-family: 'Mont', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#desk-cart-footer {
+    background-color: #20282d;
+    height: 20%;
+}
+
+#desk-cart-inner {
+    overflow-y: scroll;
+    background-color: #282f36;
+    height: 60%;
+}
+
+#cart-grid-div {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#desk-cart-item {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 95px;
+    margin: 10px 0px 5px 0px;
+    background-color: #393f47;
+    border-radius: 3px;
+}
+
+#desk-cart-item-wrapper {
+    margin-top: 20px;
+}
+
+#desk-item-img-container {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    width: 134px;
+    height: 100%;
+}
+
+#item-info-div {
+    flex-grow: 1;
+    width: 150px;
+    margin-left: 25px;
+}
+
+#item-price-div {
+    width: 212px;
+    margin-left: 25px;
+    margin-top:45px;
+}
+
+#delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 100%;
+    border: 0;
+    border-radius: 0 2px 4px 0;
+    background-color: #393f47;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transition: all .12s ease-in;
+    cursor: pointer;
+}
+
+.cust-button{
+    background-color: #4CAF50;
+    height: 26px;
+    width: 90px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Mont', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 8px;
+    border-radius: 3px;
+  }
+
+  #clear-button {
+    background-color: #eb5757;
+  }
+
+  #desk-footer-left {
+    font-family: 'Mont', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: beige;
+  }
+
+  #desk-footer-wrap {
+    padding: 16px 24px;
+  }
+
+  #desk-footer-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+#delete-button:hover{
+    background-color: #eb5757;
+}
+
+
+/* The Close Button */
+.close {
+    border-radius: 2px;
+    padding-right: 20px;
+    padding-top: 5px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
