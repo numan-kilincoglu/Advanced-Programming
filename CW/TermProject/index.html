@@ -93,24 +93,26 @@
             <div class="plus-but">
                 <button id="plus-button"><span>&#43;</span></button>
             </div>
+            <div class="cart-div" id="mobile-cart-button">
+                <img class="cart-icon" src="assets/cart.png">
+                <span id="mobile-cart-size" class="size-cart-div"></span>
+            </div>
             <div class="nav-icon">
                 <img class="top-icon" src="assets/profile-icon.jpg">
             </div>
         </div>
     </nav>
 
-    <!-- Desktop Card Modal -->
+    <!-- Cart Modal -->
     <div id="deskModal" class="modal">
         <!-- Modal content -->
-        <div class="desk-modal-content">
+        <div id="desk-modal-content">
             <div id="desk-header">
                 <span id="desk-cart-head">Items In Cart</span>
                 <span class="close">&times;</span>
             </div>
             <div id="desk-cart-inner">
-                <div id="cart-grid-div">
-
-                </div>
+                <div id="cart-grid-div"></div>
             </div>
             <div id="desk-cart-footer">
                 <div id="desk-footer-wrap">
@@ -120,20 +122,14 @@
                             <span id="cart-total"></span>
                         </div>
                         <div id="desk-footer-right">
-                            <button id="clear-button" class="cust-button">Clear All</button>
-                            <button id="purchase-button" class="cust-button">Purchase</button>
+                            <button id="clear-button" onclick="removeAll()" class="cust-button">Clear All</button>
+                            <div style="width: 20px;"></div>
+                            <button id="purchase-button" onclick="cartPurchase()" class="cust-button">Purchase</button>
                         </div>
                     </div>
                 </div>
-                <button class="icon-button" onclick="mainResetFilters()">
-                    <span>
-                        <img class="button_icon" src="assets/filter-reset.svg">
-                    </span>
-                    <span class="button_text">Reset</span>
-                </button>
             </div>
         </div>
-
     </div>
 
     <nav class="navbar">
@@ -171,12 +167,10 @@
                 <span class="cart-icon"><img src="assets/usd.PNG"></span>
                 <span id="desk-balance"></span>
             </div>
-            <div>
-                <button id="plus-button"><span>&#43;</span></button>
-            </div>
+            <button id="plus-button"><span>&#43;</span></button>
             <div class="cart-div" id="cart-button">
                 <img class="cart-icon" src="assets/cart.png">
-                <span id="cart-size"></span>
+                <span id="cart-size" class="size-cart-div"></span>
             </div>
             <div class="dropdown">
                 <div class="nav-icon"><img class="top-icon" src="assets/profile-icon.jpg"></div>

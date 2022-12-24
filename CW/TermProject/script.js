@@ -3,6 +3,11 @@ let currency = "usd";
 let lang = "en";
 let minPrice = 0;
 let maxPrice = 0;
+let cartArray = [];
+var cartSizeDiv = document.querySelector("#cart-size");
+var mobileCartSpan = document.querySelector("#mobile-cart-size");
+var cardDiv = document.querySelector("#cart-grid-div");
+var cartTotal = document.querySelector("#cart-total");
 
 const itemArray =
     [
@@ -257,7 +262,7 @@ const itemArray =
 
     ];
 
-let cartArray = [];
+
 
 function createItems() {
     var div = document.querySelector("#main-col .card-layout");
@@ -279,7 +284,6 @@ function filterItemName(type) {
 }
 
 function filterByPrice() {
-    console.log(minPrice, maxPrice);
     if (minPrice < maxPrice) {
         var div = document.querySelector("#main-col .card-layout");
         div.innerHTML = '';
@@ -408,7 +412,6 @@ function chooseGame(type) {
     if (type === 3) {
         gameType = "rust";
     }
-    console.log(gameType);
     filterItemName(gameType);
 }
 
@@ -477,10 +480,15 @@ function changeLang(lang) {
 
 function modalEvents() {
     var modal = document.getElementById("deskModal");
-    var btn = document.querySelector("#cart-button");
+    var deskCartButton = document.querySelector("#cart-button");
+    var mobileCartButton = document.querySelector("#mobile-cart-button");
     var span = document.getElementsByClassName("close")[0];
 
-    btn.onclick = function () {
+    mobileCartButton.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    deskCartButton.onclick = function () {
         modal.style.display = "block";
     }
 
@@ -495,79 +503,197 @@ function modalEvents() {
     }
 }
 
-function addCartEvents() {
-    let buttons = document.querySelectorAll(".add-cart-button");
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('click', () => {
-            totalCost(itemArray[i]);
-            updateCartSize();
-        });
+//Item info
+function getItem(itemId) {
+    for (let i = 0; i < itemArray.length; i++) {
+        if (itemArray[i].id == parseInt(itemId)) return itemArray[i];
+    }
+    return null;
+}
+
+function checkSameItem(itemId) {
+    return cartArray.includes(itemId);
+}
+
+//Cart operations
+function addTocart(button) {
+    var item = getItem(button.id);
+    if (!checkSameItem(item.id)) {
+        addToLocalStorage(item.id);
+        calculateCost(item);
+        setTotalCost();
+        addCartDiv(item);
+        updateCartSize();
     }
 }
 
+function removeAll() {
+    cardDiv.innerHTML = '';
+    cartTotal.innerHTML = 0;
+    localStorage.setItem("cartSize", 0);
+    localStorage.setItem("totalCost", 0);
+    cartSizeDiv.innerHTML = getCartCount();
+    cartArray = [];
+    localStorage.setItem("cartItemId", JSON.stringify(cartArray));
+    getItemsInCart();
+}
+
+function cartPurchase() {
+    var balance = getBalance();
+    var cartSize = getCartCount();
+    var cost = getCartCost();
+    var parsedBalance;
+    var parsedSize;
+    var parsedCost;
+
+    if (balance == undefined) return;
+    if (cartSize == undefined) return;
+    if (cost == undefined) return;
+    parsedBalance = parseInt(balance);
+    parsedSize = parseInt(cartSize);
+    parsedCost = parseInt(cost);
+
+    if (parsedBalance == 0) return;
+    if (parsedSize == 0) return;
+    if (parsedBalance < parsedCost) return;
+    if (parsedBalance >= parsedCost) {
+        decreaseBalance(parsedCost);
+        setTotalBalance();
+        removeAll();
+        alert("Thank You For Your Purchase");
+    }
+}
+
+function removeFromCart(button) {
+    var clicked_element = button;
+    var count = getCartCount();
+    if (count > 0) {
+        getLocalIds();
+        for (let i = 0; i < cartArray.length; i++) {
+            if (cartArray[i] == parseInt(clicked_element.id)) {
+                var item = getItem(cartArray[i]);
+                decreaseCost(item.price);
+                cartArray = deleteCartArrayItem(cartArray[i])
+                updateCartStorage();
+                clearCart();
+                decreaseCartSize();
+                setTotalCost();
+                getItemsInCart();
+
+            }
+        }
+    }
+}
+
+function updateCartStorage() {
+    localStorage.setItem("cartItemId", JSON.stringify(cartArray));
+}
+
+function deleteCartArrayItem(id) {
+    return cartArray.filter(f => f !== id)
+}
+
 function updateCartSize() {
-    let div = document.querySelector("#cart-size");
     let num = localStorage.getItem('cartSize');
     let parsed = parseInt(num);
     if (num == null) {
         localStorage.setItem('cartSize', 1);
-        div.innerHTML = 1;
+        cartSizeDiv.innerHTML = 1;
+        mobileCartSpan.innerHTML = 1;
         return;
     }
     localStorage.setItem('cartSize', parsed + 1);
-    div.innerHTML = parsed + 1;
+    console.log(parsed + 1);
+    cartSizeDiv.innerHTML = parsed + 1;
+    mobileCartSpan.innerHTML = parsed + 1;
 }
 
-function addTocart(trigger_element) {
-    var clicked_element = trigger_element;
-    addart(clicked_element.id);
+function decreaseCartSize() {
+    let div = document.querySelector("#cart-size");
+    let num = localStorage.getItem('cartSize');
+    let parsed = parseInt(num);
+    if (num == null) {
+        return;
+    }
+    localStorage.setItem('cartSize', parsed - 1);
+    div.innerHTML = parsed - 1;
 }
 
-function myFun(trigger_element) {
-    // Get your element:
-
+function decreaseBalance(cost) {
+    var balance = getBalance();
+    if (balance == 0) {
+        return;
+    }
+    localStorage.setItem("balance", parseFloat(balance) - cost);
 }
 
-function getItem(itemId) {
-    return itemArray.filter(item => item.id == itemId);
+function clearCart() {
+    var cardDiv = document.querySelector("#cart-grid-div");
+    cardDiv.innerHTML = '';
 }
 
-function addCart(itemId) {
-    item = getItem(itemId);
-    addToLocalStorage(itemId);
+function addCartDiv(item) {
     var cardDiv = document.querySelector("#cart-grid-div");
     cardDiv.innerHTML += `<div id="desk-cart-item">
-                        <div id="desk-item-img-container">
-                            <img class="item-img" src="${item.img}">
-                        </div>
-                        <div id="desk-cart-item-wrapper">
-                            <div id="item-info-div">
-                                <div class="item-name">${item.name}</div>
-                                <div class="item-second-name">${item.secondName}</div>
-                                <div class="item-rarity">${item.rarity}</div>
+                            <div id="desk-item-img-container">
+                                <img class="item-img" src="${item.img}">
                             </div>
-                        </div>
-                        <div id="item-price-div">
-                            <div class="item-price"><span>$ </span>${item.price}</div>
-                        </div>
-                    </div>`;
+                            <div id="desk-cart-item-wrapper">
+                                <div id="item-info-div">
+                                    <div class="item-name">${item.name}</div>
+                                    <div class="item-second-name">${item.secondName}</div>
+                                    <div class="item-rarity">${item.rarity}</div>
+                                </div>
+                            </div>
+                            <div id="item-price-div">
+                                <div class="item-price"><span>$ </span>${item.price}</div>
+                            </div>
+                            <div id=${item.id} class="delete-button" onclick="removeFromCart(this)">
+                                <img class="button_icon" src="assets/delete.svg">
+                            </div>
+                        </div>`;
+}
 
+function getLocalIds() {
+    cartArray = JSON.parse(localStorage.getItem("cartItemId")) ?? [];
+}
+
+function setCartArray() {
+    return JSON.parse(localStorage.getItem("cartItemId")) ?? [];
 }
 
 function addToLocalStorage(itemId) {
     if (localStorage.getItem("cartSize") == null) {
+        cartArray = JSON.parse(localStorage.getItem("cartItemId")) ?? [];
+        cartArray.push(itemId);
+        localStorage.setItem("cartItemId", JSON.stringify(cartArray))
     } else {
-        cartArray = JSON.parse(localStorage.getItem("cartItemId"));
         cartArray.push(itemId);
         localStorage.setItem("cartItemId", JSON.stringify(cartArray))
     }
 }
 
 function getItemsInCart() {
+    var count = getCartCount();
+    var item;
+    if (count > 0) {
+        getLocalIds();
+        cartArray.forEach(element => {
+            item = getItem(element);
+            addCartDiv(item);
+        });
+    }
+}
+
+function decreaseCost(price) {
+    let sum = localStorage.getItem('totalCost');
+    let parsed = parseInt(sum);
+    parsed - price > 0 ? localStorage.setItem('totalCost', parsed - price)
+        : localStorage.setItem('totalCost', 0);
 
 }
 
-function totalCost(item) {
+function calculateCost(item) {
     let sum = localStorage.getItem('totalCost');
     let parsed = parseInt(sum);
     if (sum == null) {
@@ -577,17 +703,33 @@ function totalCost(item) {
     localStorage.setItem('totalCost', parsed + item.price);
 }
 
-function getCartSize() {
+function getCartCount() {
+    return localStorage.getItem('cartSize') == null ? 0 : parseInt(localStorage.getItem('cartSize'));
+}
+
+function setCartSize() {
     let div = document.querySelector("#cart-size");
     let num = localStorage.getItem('cartSize');
     if (num == null) {
         div.innerHTML = 0;
+        mobileCartSpan.innerHTML = 0;
     } else {
         div.innerHTML = parseInt(num);
+        mobileCartSpan.innerHTML = parseInt(num);
     }
 }
 
-function getTotalCost() {
+function getCartCost() {
+    return localStorage.getItem('totalCost') == null ? 0 :
+        localStorage.getItem('totalCost');
+}
+
+function getBalance() {
+    return localStorage.getItem('balance') == null ? 0 :
+        localStorage.getItem('balance');
+}
+
+function setTotalCost() {
     let div = document.querySelector("#cart-total");
     let sum = localStorage.getItem('totalCost');
     if (sum == null) {
@@ -598,11 +740,10 @@ function getTotalCost() {
     div.style.color = "#4CAF50";
 }
 
-function getTotalBalance() {
+function setTotalBalance() {
     let div = document.querySelector("#desk-balance");
     let mobileDiv = document.querySelector("#mobile-balance");
     let sum = localStorage.getItem('balance');
-    console.log(sum);
     if (sum == null) {
         div.innerText = 0;
         mobileDiv.innerText = 0;
@@ -616,11 +757,7 @@ initialValues();
 filterEventListeners();
 createItems();
 modalEvents();
-addCartEvents();
-getCartSize();
-getTotalCost();
-getTotalBalance();
-//getCartItems();
-
-//getItemsInCart();
-
+setCartSize();
+setTotalCost();
+setTotalBalance();
+getItemsInCart();

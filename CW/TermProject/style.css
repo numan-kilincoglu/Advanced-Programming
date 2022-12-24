@@ -149,7 +149,7 @@ body {
     height: 20px;
 }
 
-#cart-size {
+.size-cart-div {
     font-family: 'Mont', sans-serif;
     font-size: 1rem;
     color: beige;
@@ -166,6 +166,7 @@ body {
     color: beige;
     padding-top: 9px;
 }
+
 #mobile-balance {
     font-family: 'Mont', sans-serif;
     font-size: 0.85rem;
@@ -273,9 +274,7 @@ body {
     font-size: 1.5rem;
     border-width: 0px;
     margin: 5px;
-    margin-right: 10px;
-    justify-content: left;
-    align-items: left;
+    margin-right: 5px;
     position: relative;
     vertical-align: top;
 }
@@ -284,6 +283,11 @@ body {
     position: relative;
     top: -4px;
     left: -2px;
+}
+
+#plus-button:hover {
+    background-color: #34835e;
+
 }
 
 #currency-button {
@@ -357,7 +361,7 @@ body {
     text-align: center;
     font-family: 'Mont', sans-serif;
     font-size: 0.75rem;
-    padding-left: 4px;
+    padding-left: 12px;
 }
 
 .select-button {
@@ -365,7 +369,7 @@ body {
     border: none;
     display: block;
     align-items: center;
-    margin: 0px 1px;
+    margin: 4px 6px;
     border-radius: 2px;
 }
 
@@ -405,6 +409,7 @@ body {
     .game-wrapper .button-text {
         font-size: 0.7rem;
         font-family: 'Mont', sans-serif;
+        font-weight: 600;
     }
 
 }
@@ -802,7 +807,7 @@ body {
     font-size: 10px;
     color: beige;
     font-family: 'Mont', sans-serif;
-    height: 25px;
+    height: 28px;
     border: none;
     border-radius: 2px;
     white-space: nowrap;
@@ -818,7 +823,7 @@ body {
 }
 
 .add-cart-button {
-    height: 25px;
+    height: 28px;
     border: none;
     border-radius: 2px;
     white-space: nowrap;
@@ -939,6 +944,15 @@ body {
         height: 60px;
         width: 96%;
     }
+
+    #desk-modal-content {
+        border-radius: 52px;
+        background-color: #fefefe;
+        margin: 15% auto;
+        width: 90%;
+        height: 80%;
+    }
+
 }
 
 /*Mobile filter style*/
@@ -1074,7 +1088,7 @@ body {
 
 /*Mobile navbar*/
 
-@media only screen and (max-width: 648px) {
+@media screen and (max-width: 648px) {
     .navbar {
         display: none;
     }
@@ -1120,7 +1134,7 @@ body {
 }
 
 #mobile-nav #plus-button {
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 #mobile-nav .balance-div {
@@ -1144,7 +1158,7 @@ body {
 }
 
 /* Modal Content/Box */
-.desk-modal-content {
+#desk-modal-content {
     border-radius: 2px;
     background-color: #fefefe;
     margin: 15% auto;
@@ -1191,7 +1205,7 @@ body {
     overflow: hidden;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     height: 95px;
     margin: 10px 0px 5px 0px;
@@ -1214,6 +1228,11 @@ body {
     height: 100%;
 }
 
+#desk-item-img-container .item-img {
+    width: 90%;
+    max-width: 80%;
+}
+
 #item-info-div {
     flex-grow: 1;
     width: 150px;
@@ -1223,10 +1242,10 @@ body {
 #item-price-div {
     width: 212px;
     margin-left: 25px;
-    margin-top:45px;
+    margin-top: 45px;
 }
 
-#delete-button {
+.delete-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1241,10 +1260,14 @@ body {
     cursor: pointer;
 }
 
-.cust-button{
+.delete-button:hover {
+    background-color: #fa9595;
+}
+
+.cust-button {
     background-color: #4CAF50;
-    height: 26px;
-    width: 90px;
+    height: 28px;
+    width: 120px;
     border: none;
     color: white;
     text-align: center;
@@ -1254,34 +1277,59 @@ body {
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    margin-left: 8px;
     border-radius: 3px;
-  }
+}
 
-  #clear-button {
-    background-color: #eb5757;
-  }
+#clear-button {
+    background-color: #ae3e3e;
+}
 
-  #desk-footer-left {
+#desk-footer-left {
     font-family: 'Mont', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     color: beige;
-  }
+}
 
-  #desk-footer-wrap {
+#desk-footer-wrap {
     padding: 16px 24px;
-  }
+}
 
-  #desk-footer-bar{
+#desk-footer-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-  }
+}
 
-#delete-button:hover{
+#desk-footer-right {
+    display: flex;
+}
+
+@media screen and (max-width: 648px) {
+
+    #desk-footer-bar {
+        display: inline;
+    }
+
+    #desk-footer-left {
+        padding-bottom: 5px;
+    }
+
+
+    .cust-button {
+        margin-left: 0px;
+        width: 99%;
+        padding: 0px 24px;
+    }
+}
+
+#clear-button:hover {
     background-color: #eb5757;
+}
+
+#purchase-button:hover {
+    background-color: #4ddf9a;
 }
 
 
