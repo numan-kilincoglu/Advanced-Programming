@@ -290,7 +290,7 @@ function filterByPrice() {
         itemArray.filter(item => item.game == gameType && item.price >= minPrice && item.price <= maxPrice)
             .forEach(item => {
                 div.innerHTML = div.innerHTML
-                    + cardItem(item.img, item.name, item.secondName, item.rarity, item.price);
+                    + cardItem(item.img, item.name, item.secondName, item.rarity, item.price, item.id);
             });
     }
 }
@@ -603,7 +603,6 @@ function updateCartSize() {
         return;
     }
     localStorage.setItem('cartSize', parsed + 1);
-    console.log(parsed + 1);
     cartSizeDiv.innerHTML = parsed + 1;
     mobileCartSpan.innerHTML = parsed + 1;
 }
@@ -617,7 +616,7 @@ function decreaseCartSize() {
     }
     localStorage.setItem('cartSize', parsed - 1);
     cartSizeDiv.innerHTML = parsed - 1;
-    mobileCartSpan.innerHTML = parsed - 1; 
+    mobileCartSpan.innerHTML = parsed - 1;
 }
 
 function decreaseBalance(cost) {
@@ -640,13 +639,13 @@ function addCartDiv(item) {
                                 <img class="item-img" src="${item.img}">
                             </div>
                             <div id="desk-cart-item-wrapper">
-                                <div id="item-info-div">
+                                <div id="item-info-div" class="item-info">
                                     <div class="item-name">${item.name}</div>
                                     <div class="item-second-name">${item.secondName}</div>
                                     <div class="item-rarity">${item.rarity}</div>
                                 </div>
                             </div>
-                            <div id="item-price-div">
+                            <div id="item-price-div" class="price-div">
                                 <div class="item-price"><span>$ </span>${item.price}</div>
                             </div>
                             <div id=${item.id} class="delete-button" onclick="removeFromCart(this)">
@@ -754,11 +753,16 @@ function setTotalBalance() {
     mobileDiv.innerText = sum;
 }
 
-initialValues();
-filterEventListeners();
-createItems();
-modalEvents();
-setCartSize();
-setTotalCost();
-setTotalBalance();
-getItemsInCart();
+function init() {
+    initialValues();
+    filterEventListeners();
+    createItems();
+    modalEvents();
+    setCartSize();
+    setTotalCost();
+    setTotalBalance();
+    getItemsInCart();
+
+}
+
+init();
