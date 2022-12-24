@@ -616,7 +616,8 @@ function decreaseCartSize() {
         return;
     }
     localStorage.setItem('cartSize', parsed - 1);
-    div.innerHTML = parsed - 1;
+    cartSizeDiv.innerHTML = parsed - 1;
+    mobileCartSpan.innerHTML = parsed - 1; 
 }
 
 function decreaseBalance(cost) {

@@ -361,7 +361,7 @@ body {
     text-align: center;
     font-family: 'Mont', sans-serif;
     font-size: 0.75rem;
-    padding-left: 12px;
+    padding-left: 8px;
 }
 
 .select-button {
@@ -369,7 +369,7 @@ body {
     border: none;
     display: block;
     align-items: center;
-    margin: 4px 6px;
+    margin: 2px 4px;
     border-radius: 2px;
 }
 
