@@ -8,6 +8,8 @@ var cartSizeDiv = document.querySelector("#cart-size");
 var mobileCartSpan = document.querySelector("#mobile-cart-size");
 var cardDiv = document.querySelector("#cart-grid-div");
 var cartTotal = document.querySelector("#cart-total");
+let usdRate = 18.65;
+let euroRate = 19.5;
 
 const itemArray =
     [
@@ -281,6 +283,7 @@ function filterItemName(type) {
             div.innerHTML = div.innerHTML
                 + cardItem(item.img, item.name, item.secondName, item.rarity, item.price, item.id);
         });
+    changeItemsLang();
 }
 
 function filterByPrice() {
@@ -310,13 +313,13 @@ function cardItem(img, name, secondName, rarity, price, id) {
                     <div class="item-name">${name}</div>
                     <div class="item-second-name">${secondName}</div>
                     <div class="item-rarity">${rarity}</div>
-                    <div class="item-price"><span>$ </span>${price}</div>
+                    <div class="item-price"><span id="cur-mark">$ </span><span id="item-price-span">${price}</span></div>
                     <div class="item-id" style="display: none;">${id}</div>
                 </div>
             </div>
             <div class="button-wrapper">
             <div class="market-buttons">
-                <button class="buy-now-button">Buy Now</button>
+                <button id="buy-now" class="buy-now-button"></button>
                 <button id=${id} class="add-cart-button" onclick="addTocart(this)">
                     <img id="button_ic" src="assets/cart.png">
                 </button>
@@ -396,7 +399,7 @@ function initialValues() {
     document.querySelector("#to").value = 0;
     document.querySelector("#mobileFrom").value = 0;
     document.querySelector("#mobileTo").value = 0;
-    localStorage.setItem("balance", 12500);
+    localStorage.setItem("balance", 12500.00);
 }
 
 function chooseGame(type) {
@@ -451,31 +454,109 @@ function sortTabIcon(sort) {
 
 function changeCurrency(cur) {
     let icon = document.querySelector("#currency-button #drop-left-icon");
+    let text = document.querySelector("#nav-cur-span");
+    let mobileIcon = document.querySelector("#mobile-cur-img");
+    let mobileText = document.querySelector("#mobile-cur-span");
+    var tempCur;
+    let iconPath = "assets/";
+
     if (cur == 0) {
         currency = "eur";
-        icon.src = "assets/eur.PNG"
+        tempCur = "EUR";
+        iconPath += "eur.PNG";
     }
     if (cur == 1) {
         currency = "usd";
-        icon.src = "assets/usd.PNG"
+        tempCur = "USD";
+        iconPath += "usd.PNG";
     }
     if (cur == 2) {
         currency = "try";
-        icon.src = "assets/try.PNG"
+        tempCur = "TRY";
+        iconPath += "try.PNG";
     }
+    text.innerHTML = tempCur;
+    mobileText.innerHTML = tempCur;
+    icon.src = iconPath;
+    mobileIcon.src = iconPath;
+    setStaticStorage("currency", tempCur);
+    changeItemCurrencies();
+    changeBalanceCur();
+    setCurrency();
+}
+
+function changeBalanceCur() {
+    var cur = getStaticStorage("currency") ?? "USD";
+    var balance = getStaticStorage("balance") ?? "0";
+    var balanceDiv = document.querySelector("#desk-balance");
+    var mobileDiv = document.querySelector("#mobile-balance");
+    var currencyMark;
+    var factor;
+    if (cur == "USD") {
+        factor = 1; currencyMark = "$ ";
+    }
+    if (cur == "EUR") {
+        factor = 0.94; currencyMark = "€ ";
+    }
+    if (cur == "TRY") {
+        factor = 18.65; currencyMark = "₺ ";
+    }
+    balanceDiv.innerHTML = mobileDiv.innerHTML = (balance * factor).toFixed(2);
+}
+
+function changeItemCurrencies() {
+    var cur = getStaticStorage("currency") ?? "USD";
+    var cards = document.querySelectorAll(".item-card");
+    var currencyMark;
+    var factor;
+    var itemId;
+    if (cur == "USD") {
+        factor = 1; currencyMark = "$ ";
+    }
+    if (cur == "EUR") {
+        factor = 0.94; currencyMark = "€ ";
+    }
+    if (cur == "TRY") {
+        factor = 18.65; currencyMark = "₺ ";
+    }
+    for (var item of cards) {
+        itemId = parseInt(item.querySelector(".market-buttons .add-cart-button").id);
+        var itemObj = getItem(itemId);
+        item.querySelector("#item-price-span").innerHTML = (itemObj.price * factor).toFixed(2);
+        item.querySelector("#cur-mark").innerHTML = currencyMark;
+    }
+
 }
 
 function changeLang(lang) {
     let icon = document.querySelector("#lang-button #drop-left-icon");
+    let mobile = document.querySelector(" #mobile-lang-img");
+
+    let text = document.querySelector("#nav-lang-span");
+    let mobileText = document.querySelector("#mobile-lang-span");
+
+    var tempLang;
+    let iconPath = "assets/";
     if (lang == 0) {
         lang = "en";
-        icon.src = "assets/flag-en.PNG"
+        tempLang = "EN";
+        iconPath += "flag-en.png";
     }
     if (lang == 1) {
         lang = "tr";
-        icon.src = "assets/flag-tr.PNG"
+        tempLang = "TR";
+        iconPath += "flag-tr.png";
     }
+    icon.src = iconPath;
+    mobile.src = iconPath;
+    text.innerHTML = tempLang;
+    mobileText.innerHTML = tempLang;
+    setStaticStorage("language", tempLang);
+    changeItemsLang();
+}
 
+function setStaticStorage(key, value) {
+    localStorage.setItem(key, value);
 }
 
 function modalEvents() {
@@ -500,6 +581,43 @@ function modalEvents() {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+}
+
+function depositMoneyModal() {
+    var modal = document.getElementById("depositModal");
+    var btn = document.getElementById("plus-button");
+    var mobileBtn = document.getElementById("mobile-plus-button");
+    var span = document.getElementById("deposit-close");
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    mobileBtn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+function depositBalance() {
+    var balance = parseFloat(getBalance());
+    var value = document.querySelector("#input-deposit").value;
+    if (value == undefined) return;
+    var balValue = parseFloat(value);
+    if (balValue > 0) {
+        setStaticStorage("balance", (balValue + balance).toFixed(2));
+        setTotalBalance();
+        alert("Deposit Success");
     }
 }
 
@@ -533,6 +651,7 @@ function removeAll() {
     localStorage.setItem("cartSize", 0);
     localStorage.setItem("totalCost", 0);
     cartSizeDiv.innerHTML = getCartCount();
+    mobileCartSpan.innerHTML = getCartCount();
     cartArray = [];
     localStorage.setItem("cartItemId", JSON.stringify(cartArray));
     getItemsInCart();
@@ -753,7 +872,140 @@ function setTotalBalance() {
     mobileDiv.innerText = sum;
 }
 
+function getStaticStorage(key) {
+    return localStorage.getItem(key);
+}
+
+function setLang() {
+    let icon = document.querySelector("#lang-button #drop-left-icon");
+    let text = document.querySelector("#nav-lang-span");
+    var language = getStaticStorage("language");
+
+    if (language == undefined) {
+        text.innerHTML = "EN";
+        lang = "en";
+        icon.src = "assets/flag-en.png"
+    }
+    if (language == "EN") {
+        lang = "en";
+        text.innerHTML = "EN";
+        icon.src = "assets/flag-en.png"
+    }
+    if (language == "TR") {
+        lang = "tr";
+        text.innerHTML = "TR";
+        icon.src = "assets/flag-tr.png"
+    }
+}
+
+function setCurrency() {
+    let icon = document.querySelector("#currency-button #drop-left-icon");
+    let mobileIcon = document.querySelector("#mobile-cur-img");
+    let balanceIcon = document.querySelector("#mobil-balance-cur");
+    let deskBalanceIcon = document.querySelector("#desk-balance-cur");
+    let text = document.querySelector("#nav-cur-span");
+    let mobileText = document.querySelector("#mobile-cur-span");
+    var currency = getStaticStorage("currency");
+
+    if (currency == undefined) {
+        text.innerHTML = mobileText.innerHTML = "USD";
+        icon.src = balanceIcon.src = deskBalanceIcon.src = "assets/usd.png"
+    }
+    if (currency == "EUR") {
+        text.innerHTML = mobileText.innerHTML = "EUR";
+        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/eur.png"
+    }
+    if (currency == "USD") {
+        text.innerHTML = mobileText.innerHTML = "USD";
+        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/usd.png";
+    }
+    if (currency == "TRY") {
+        text.innerHTML = mobileText.innerHTML = "TRY";
+        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/try.png"
+    }
+}
+
+function changeItemsLang() {
+    var language = getStaticStorage("language") ?? "EN";
+    lang = language.toLowerCase();
+    if (lang == "tr") {
+        document.querySelector("#filter_text").innerHTML = "Filtrele";
+        document.querySelector("#reset-filter").innerHTML = "Sıfırla";
+        document.querySelector("#filter-min").innerHTML = "En Düşük Fiyat";
+        document.querySelector("#filter-max").innerHTML = "En Yüksek Fiyat";
+        document.querySelector("#grid-refresh").innerHTML = "Yenile";
+        document.querySelector("#h3").innerHTML = "Oyun Seç";
+        document.querySelector("#sort-price").innerHTML = "Fiyata Göre";
+        document.querySelector("#asc").innerHTML = "Artan";
+        document.querySelector("#desc").innerHTML = "Azalan";
+        document.querySelector("#grid-filter").innerHTML = "Filtrele";
+        document.querySelector("#nav-profile").innerHTML = "Profil";
+        document.querySelector("#nav-withdraw").innerHTML = "Para Çek";
+        document.querySelector("#nav-sup").innerHTML = "Destek Al";
+        document.querySelector("#nav-out").innerHTML = "Çıkış Yap";
+        document.querySelector("#desk-cart-head").innerHTML = "Sepetinizdeki Urunler";
+        document.querySelector("#total-span").innerHTML = "Sipariş Toplamı: ";
+        document.querySelector("#mobile-search-input").placeholder = "Ürün Ara...";
+        document.querySelector("#desk-search").placeholder = "Ürün Ara...";
+        document.querySelector("#mobile-profile").innerHTML = "Profil";
+        document.querySelector("#mobile-withdraw").innerHTML = "Para Çek";
+        document.querySelector("#mobile-sup").innerHTML = "Destek Al";
+        document.querySelector("#mobile-out").innerHTML = "Çıkış Yap";
+        document.querySelector("#mobile-filter-text").innerHTML = "Filtrele";
+        document.querySelector("#mobile-reset").innerHTML = "Sıfırla";
+        document.querySelector("#mobile-min").innerHTML = "En Düşük Fiyat";
+        document.querySelector("#mobile-max").innerHTML = "En Yüksek Fiyat";
+        document.querySelector("#clear-button").innerHTML = "Sepeti Temizle";
+        document.querySelector("#purchase-button").innerHTML = "Satın Al";
+        document.querySelector("#refill").innerHTML = "Bakiye Tutarı";
+        document.querySelector("#deposit").innerHTML = "Para Yükle";
+        changeButtonLang("Hemen Satın Al");
+    } else {
+        document.querySelector("#filter_text").innerHTML = "Filter";
+        document.querySelector("#reset-filter").innerHTML = "Reset";
+        document.querySelector("#filter-min").innerHTML = "Minimum Price";
+        document.querySelector("#grid-refresh").innerHTML = "Refresh";
+        document.querySelector("#h3").innerHTML = "Choose Game";
+        document.querySelector("#filter-max").innerHTML = "Maximum Price";
+        document.querySelector("#sort-price").innerHTML = "Price";
+        document.querySelector("#asc").innerHTML = "Ascending";
+        document.querySelector("#desc").innerHTML = "Descending";
+        document.querySelector("#grid-filter").innerHTML = "Filter";
+        document.querySelector("#nav-profile").innerHTML = "Profile";
+        document.querySelector("#nav-withdraw").innerHTML = "Withdraw";
+        document.querySelector("#nav-sup").innerHTML = "Support";
+        document.querySelector("#nav-out").innerHTML = "Logout";
+        document.querySelector("#desk-cart-head").innerHTML = "Items In Cart";
+        document.querySelector("#total-span").innerHTML = "Total: ";
+        document.querySelector("#mobile-search-input").placeholder = "Search...";
+        document.querySelector("#desk-search").placeholder = "Search...";
+        document.querySelector("#mobile-profile").innerHTML = "Profile";
+        document.querySelector("#mobile-withdraw").innerHTML = "Withdraw";
+        document.querySelector("#mobile-sup").innerHTML = "Support";
+        document.querySelector("#mobile-out").innerHTML = "Logout";
+        document.querySelector("#mobile-filter-text").innerHTML = "Filter";
+        document.querySelector("#mobile-reset").innerHTML = "Reset";
+        document.querySelector("#mobile-min").innerHTML = "Minimum Price";
+        document.querySelector("#mobile-max").innerHTML = "Maximum Price";
+        document.querySelector("#clear-button").innerHTML = "Clear All";
+        document.querySelector("#purchase-button").innerHTML = "Purchase";
+        document.querySelector("#refill").innerHTML = "Refill Balance";
+        document.querySelector("#deposit").innerHTML = "Deposit Money";
+        changeButtonLang("Buy Now");
+    }
+
+}
+
+function changeButtonLang(lang) {
+    var list = document.querySelectorAll(".buy-now-button");
+    for (var element of list) {
+        element.innerHTML = lang;
+    }
+}
+
 function init() {
+    setCurrency();
+    setLang();
     initialValues();
     filterEventListeners();
     createItems();
@@ -762,7 +1014,9 @@ function init() {
     setTotalCost();
     setTotalBalance();
     getItemsInCart();
-
+    changeItemsLang();
+    changeItemCurrencies();
+    depositMoneyModal()
 }
 
 init();

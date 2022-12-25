@@ -20,16 +20,16 @@
                     <span>
                         <img class="button_icon" src="assets/filter.png">
                     </span>
-                    <span class="button_text">Filter</span>
+                    <span id="mobile-filter-text" class="button_text">Filter</span>
                 </button>
                 <button class="icon-button" onclick="mobileResetFilter()">
                     <span>
                         <img class="button_icon" src="assets/filter-reset.svg">
                     </span>
-                    <span class="button_text">Reset</span>
+                    <span id="mobile-reset" class="button_text">Reset</span>
                 </button>
             </div>
-            <div class="filter-alt-text">
+            <div id="mobile-min" class="filter-alt-text">
                 Minimum Price
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
@@ -38,7 +38,7 @@
             </div>
             <input type="text" id="mobileFrom" name="from" class="custom-textfield" disabled>
 
-            <div class="filter-alt-text">
+            <div id="mobile-max" class="filter-alt-text">
                 Maximum Price
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
@@ -55,20 +55,52 @@
         <div class="mobile-nav-header">GameMarket</div>
         <div id="mobile-nav-inner">
             <div class="mobile-inner">
+                <div id="mobile-shared-drop" class="mobile-shared">
+                    <div class="nav-currency">
+                        <div class="dropdown">
+                            <button id="currency-button" class="drop-button">
+                                <img class="drop-left-icon" id="mobile-cur-img" src="assets/eur.PNG">
+                                <span class="nav-cur-name" id="mobile-cur-span">USD</span>
+                            </button>
+                            <div class="dropdown-content">
+                                <a id="eur" onclick="changeCurrency(0)"><img id="drop-left-icon"
+                                        src="assets/eur.PNG">EUR</a>
+                                <a id="usd" onclick="changeCurrency(1)"><img id="drop-left-icon"
+                                        src="assets/usd.PNG">USD</a>
+                                <a id="try" onclick="changeCurrency(2)"><img id="drop-left-icon"
+                                        src="assets/try.PNG">TRY</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-lang">
+                        <div class="dropdown">
+                            <button class="drop-button" id="mobile-lang-button">
+                                <img class="drop-left-icon" id="mobile-lang-img" src="assets/flag-en.png">
+                                <span class="nav-lang-name" id="mobile-lang-span">EN</span>
+                            </button>
+                            <div class="dropdown-content">
+                                <a onclick="changeLang(0)"><img class="drop-left-icon" src="assets/flag-en.png">EN</a>
+                                <a onclick="changeLang(1)"><img class="drop-left-icon" src="assets/flag-tr.png">TR</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-inner">
                 <img id="dropdown-icon" src="assets/profile.svg">
-                <span class="drop-span">Profile</span>
+                <span id="mobile-profile" class="drop-span">Profile</span>
             </div>
             <div class="mobile-inner">
                 <img id="dropdown-icon" src="assets/money.svg">
-                <span class="drop-span">Withdraw</span>
+                <span id="mobile-withdraw" class="drop-span">Withdraw</span>
             </div>
             <div class="mobile-inner">
                 <img id="dropdown-icon" src="assets/mail.svg">
-                <span class="drop-span">Support</span>
+                <span id="mobile-sup" class="drop-span">Support</span>
             </div>
             <div class="mobile-inner">
                 <img id="dropdown-icon" src="assets/logout.svg">
-                <span class="drop-span">Logout</span>
+                <span id="mobile-out" class="drop-span">Logout</span>
             </div>
             <div class="sidebar-divider"></div>
             <div class="divider"></div>
@@ -87,11 +119,11 @@
         </button>
         <div class="mobile-nav-right">
             <div class="balance-div">
-                <span class="cart-icon"><img src="assets/usd.PNG"></span>
+                <span class="cart-icon"><img id="mobil-balance-cur" src="assets/usd.PNG"></span>
                 <span id="mobile-balance"></span>
             </div>
             <div class="plus-but">
-                <button id="plus-button"><span>&#43;</span></button>
+                <button class="plus-button" id="mobile-plus-button"><span>&#43;</span></button>
             </div>
             <div class="cart-div" id="mobile-cart-button">
                 <img class="cart-icon" src="assets/cart.png">
@@ -107,7 +139,7 @@
     <div id="deskModal" class="modal">
         <!-- Modal content -->
         <div id="desk-modal-content" class="modal-content">
-            <div id="desk-header">
+            <div class="desk-header">
                 <span id="desk-cart-head">Items In Cart</span>
                 <span class="close">&times;</span>
             </div>
@@ -118,7 +150,7 @@
                 <div id="desk-footer-wrap">
                     <div id="desk-footer-bar">
                         <div id="desk-footer-left">
-                            <span>Total: </span>
+                            <span id="total-span">Total: </span>
                             <span id="cart-total"></span>
                         </div>
                         <div id="desk-footer-right">
@@ -131,6 +163,27 @@
             </div>
         </div>
     </div>
+
+    <div id="depositModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="desk-header">
+                <span></span>
+                <span id="deposit" class="button_text">Deposit Money</span>
+                <span id="deposit-close" class="close">&times;</span>
+            </div>
+            <div class="deposit-wrap">
+                <span id="refill" class="button_text">Refill Balance:</span>
+                <input id="input-deposit" type="text" name="" placeholder="" class="in-deposit">
+            </div>
+            <div class="button-wrap">
+                <button id="deposit-button" onclick="depositBalance()" class="cust-button">Deposit</button>
+            </div>
+        </div>
+
+    </div>
+
+
 
     <nav class="navbar">
         <div class="nav-left">
@@ -155,8 +208,8 @@
                         <span class="nav-lang-name" id="nav-lang-span">EN</span>
                     </button>
                     <div class="dropdown-content">
-                        <a id="en" onclick="changeLang(0)"><img id="drop-left-icon" src="assets/flag-en.png">EN</a>
-                        <a id="tr" onclick="changeLang(1)"><img id="drop-left-icon" src="assets/flag-tr.png">TR</a>
+                        <a onclick="changeLang(0)"><img id="drop-left-icon" src="assets/flag-en.png">EN</a>
+                        <a onclick="changeLang(1)"><img id="drop-left-icon" src="assets/flag-tr.png">TR</a>
                     </div>
                 </div>
             </div>
@@ -164,10 +217,10 @@
 
         <div class="nav-right">
             <div class="balance-div">
-                <span class="cart-icon"><img src="assets/usd.PNG"></span>
+                <span class="cart-icon"><img id="desk-balance-cur" src="assets/usd.PNG"></span>
                 <span id="desk-balance"></span>
             </div>
-            <button id="plus-button"><span>&#43;</span></button>
+            <button class="plus-button" id="plus-button"><span>&#43;</span></button>
             <div class="cart-div" id="cart-button">
                 <img class="cart-icon" src="assets/cart.png">
                 <span id="cart-size" class="size-cart-div"></span>
@@ -180,19 +233,19 @@
                 <div class="dropdown-content">
                     <a href="#">
                         <img id="dropdown-icon" src="assets/profile.svg">
-                        <span class="drop-span">Profile</span>
+                        <span id="nav-profile" class="drop-span">Profile</span>
                     </a>
                     <a href="#">
                         <img id="dropdown-icon" src="assets/money.svg">
-                        <span class="drop-span">Withdraw</span>
+                        <span id="nav-withdraw" class="drop-span">Withdraw</span>
                     </a>
                     <a href="#">
                         <img id="dropdown-icon" src="assets/mail.svg">
-                        <span class="drop-span">Support</span>
+                        <span id="nav-sup" class="drop-span">Support</span>
                     </a>
                     <a href="#">
                         <img id="dropdown-icon" src="assets/logout.svg">
-                        <span class="drop-span">Logout</span>
+                        <span id="nav-out" class="drop-span">Logout</span>
                     </a>
                 </div>
             </div>
@@ -238,7 +291,7 @@
                     <span>
                         <img class="button_icon" src="assets/filter.png">
                     </span>
-                    <span class="button_text">Filter</span>
+                    <span id="filter_text" class="button_text">Filter</span>
                 </button>
                 <div></div>
                 <div></div>
@@ -246,12 +299,12 @@
                     <span>
                         <img class="button_icon" src="assets/filter-reset.svg">
                     </span>
-                    <span class="button_text">Reset</span>
+                    <span id="reset-filter" class="button_text">Reset</span>
                 </button>
                 <div>
                 </div>
             </div>
-            <div class="filter-alt-text">
+            <div id="filter-min" class="filter-alt-text">
                 Minimum Price
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
@@ -261,7 +314,7 @@
 
             <input type="text" id="from" name="from" class="custom-textfield" disabled>
 
-            <div class="filter-alt-text">
+            <div id="filter-max" class="filter-alt-text">
                 Max. Price
                 <img class="filter-icon" src="assets/filter-price.svg">
             </div>
@@ -278,12 +331,13 @@
                             <span>
                                 <img class="button_icon" src="assets/filter.png">
                             </span>
-                            <span class="button_text">Filter</span>
+                            <span id="grid-filter" class="button_text">Filter</span>
                         </button>
                     </div>
                     <div class="search-div">
                         <img src="assets/search.svg">
-                        <input type="text" name="" placeholder="Search..." class="search" onkeyup=searchItem(this)>
+                        <input id="desk-search" type="text" name="" placeholder="Search..." class="search"
+                            onkeyup=searchItem(this)>
                     </div>
                 </div>
                 <div class="header-right">
@@ -291,20 +345,20 @@
                         <span>
                             <img class="button_icon" src="assets/refresh.svg">
                         </span>
-                        <span class="button_text">Refresh</span>
+                        <span id="grid-refresh" class="button_text">Refresh</span>
                     </button>
                     <div class="click-dropdown" tabindex="1">
                         <a class="dropbtn">
                             <span>
                                 <img class="button_icon" src="assets/sort.svg">
                             </span>
-                            <span class="button_text">Price</span>
+                            <span id="sort-price" class="button_text">Price</span>
                             <img class="button_icon" id="sortPrice" src="assets/up.png">
                         </a>
                         <i class="db2" tabindex="1"></i>
                         <div class="click-drop-content">
-                            <a onclick="sortTabIcon('asc')" href="#">Ascending</a>
-                            <a onclick="sortTabIcon('desc')" href="#">Descending</a>
+                            <a id="asc" onclick="sortTabIcon('asc')" href="#">Ascending</a>
+                            <a id="desc" onclick="sortTabIcon('desc')" href="#">Descending</a>
                         </div>
                     </div>
                 </div>

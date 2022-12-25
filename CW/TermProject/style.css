@@ -134,7 +134,7 @@ body {
     justify-content: space-between;
     width: 40px;
     border-radius: 2px;
-    margin-right: 25px;
+    margin-right: 50px;
 }
 
 .balance-div .cart-icon {
@@ -164,14 +164,14 @@ body {
     font-family: 'Mont', sans-serif;
     font-size: 0.85rem;
     color: beige;
-    padding-top: 9px;
+    padding-top: 8px;
 }
 
 #mobile-balance {
     font-family: 'Mont', sans-serif;
     font-size: 0.85rem;
     color: beige;
-    padding-top: 9px;
+    padding-top: 8px;
 }
 
 
@@ -265,7 +265,7 @@ body {
 
 
 /* Plus Button */
-#plus-button {
+.plus-button {
     width: 22px;
     height: 22px;
     background-color: #4ddf9a;
@@ -279,13 +279,13 @@ body {
     vertical-align: top;
 }
 
-#plus-button span {
+.plus-button span {
     position: relative;
     top: -4px;
     left: -2px;
 }
 
-#plus-button:hover {
+.plus-button:hover {
     background-color: #34835e;
 
 }
@@ -804,7 +804,7 @@ body {
 .buy-now-button {
     font-weight: 600;
     letter-spacing: .01em;
-    font-size: 10px;
+    font-size: 12px;
     color: beige;
     font-family: 'Mont', sans-serif;
     height: 28px;
@@ -1144,12 +1144,12 @@ body {
     padding-right: 10px;
 }
 
-#mobile-nav #plus-button {
+#mobile-nav .plus-button {
     margin-right: 5px;
 }
 
 #mobile-nav .balance-div {
-    margin-right: 25px;
+    margin-right: 50px;
     padding-bottom: 5px;
 }
 
@@ -1177,13 +1177,50 @@ body {
     height: 50%;
 }
 
-#desk-header {
+#depositModal .modal-content {
+    background-color: #282f36;
+    width:60%;
+    height: 20%;
+}
+
+.desk-header {
     display: flex;
     justify-items: center;
     justify-content: space-between;
     align-items: center;
     background-color: #20282d;
     height: 20%;
+}
+
+#depositModal .cust-button{
+    margin-top: 5px;
+    height: 25px;
+    width: 100%;
+
+}
+
+.button-wrap {
+    width: 92%;
+    align-items: center;
+    margin: 5px 10px 0px 10px;
+}
+
+.in-deposit {
+    font-family: 'Mont', sans-serif;
+    font-size: 0.7rem;
+    margin-left: 5px;
+    border-width: 0px 0px 1px;
+    background-color: #212529;
+    border-color: #5e656f;
+    text-align: left;
+    letter-spacing: 0.5px;
+    color: beige;
+    width: 25%;
+    outline-width: 0;
+}
+
+.deposit-wrap {
+    margin-left: 15px;
 }
 
 #desk-cart-head {
@@ -1364,3 +1401,37 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+.mobile-shared {
+    margin: 4px 0px 4px 0px;
+    display: flex;
+    border-radius: 0px;
+}
+
+#mobile-shared-drop .nav-currency .dropdown-content {
+    left: 28px;
+    top:138px;
+    min-width: 20px;
+    width: 65px;
+    max-width: 62px;
+    border-radius: 0px;
+    border: 1.8px solid #393f47;
+}
+
+#mobile-shared-drop .nav-lang .dropdown-content {
+    left: 90px;
+    top:138px;
+    min-width: 20px;
+    width: 65px;
+    max-width: 62px;
+    border-radius: 0px;
+    border: 1.8px solid #393f47;
+}
+
+#mobile-shared-drop .nav-lang .drop-left-icon {
+    padding-top: 6px;
+    width: 24px;
+    height: 24px;
+    padding-right: 8px;
+}
+
