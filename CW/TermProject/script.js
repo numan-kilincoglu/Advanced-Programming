@@ -1,14 +1,4 @@
 
-if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").then(registration => {
-        console.log("sw registered!");
-        console.log(registration);
-    }).catch(err => {
-        console.log("sw failed!");
-        console.log(err);
-    })
-}
-
 let gameType = "csgo";
 let currency = "usd";
 let lang = "en";
@@ -1014,6 +1004,19 @@ function changeButtonLang(lang) {
     }
 }
 
+function serviceWork() {
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js").then(registration => {
+            console.log("sw registered!");
+            console.log(registration);
+        }).catch(err => {
+            console.log("sw failed!");
+            console.log(err);
+        })
+    }
+
+}
+
 function init() {
     setCurrency();
     setLang();
@@ -1027,7 +1030,8 @@ function init() {
     getItemsInCart();
     changeItemsLang();
     changeItemCurrencies();
-    depositMoneyModal()
+    depositMoneyModal();
+    serviceWork();
 }
 
 init();
