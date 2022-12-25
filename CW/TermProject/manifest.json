@@ -2,7 +2,7 @@
     "name": "Game Market",
     "short_name": "Game Garket",
     "icons": [{
-      "src": "assets/game-icon.PNG",
+      "src": "./assets/game-icon.PNG",
         "sizes": "128x128",
         "type": "image/png"
       }],
