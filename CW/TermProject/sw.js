@@ -1,9 +1,9 @@
 self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open("static").then(
-            cache => {debugger;
-                return cache.addAll(["index.html", "style.css", "assets/", "script.js" ,"assets/game-icon.PNG"]);
-                
+            cache => {
+                return cache.addAll(["./index.html", "./style.css", "./assets/", "./script.js", "./assets/game-icon.PNG"]);
+
             }
         )
     )
@@ -16,4 +16,4 @@ self.addEventListener("fetch", e => {
             return response || fetch(e.request);
         })
     )
-})
+});
