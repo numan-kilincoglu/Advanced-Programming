@@ -2,6 +2,7 @@ self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open("static").then(
             cache => {
+                console.log("geldi")
                 return cache.addAll(["./","./index.html", "./style.css", "./assets/", "./script.js", "./assets/game-icon.PNG"]);
 
             }
