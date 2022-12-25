@@ -1030,7 +1030,7 @@ function init() {
     changeItemsLang();
     changeItemCurrencies();
     depositMoneyModal();
-    
+
 }
 
 init();
