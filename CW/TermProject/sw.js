@@ -1,21 +1,18 @@
-const CACHE = 'termProject'
-const FILES = ['assets/','index.html', 'script.js', 'sw.js', 'manifest.json']
-function installCB(e) {
+self.addEventListener("install", (e) => {
     e.waitUntil(
-        caches.open(CACHE)
-            .then(cache => cache.addAll(FILES))
-            .catch(console.log)
+        caches.open("static").then(
+            cache => {
+                return cache.addAll(["./", "./style.css", "./assets/", "./script.js" ,"./assets/game-icon.PNG"]);
+            }
+        )
     )
-}
+});
 
-self.addEventListener('install', installCB)
-
-function cacheCB(e) { //cache first
-    let req = e.request
+self.addEventListener("fetch", e => {
+    // // console.log(`getir from ${e.request.url}`);
     e.respondWith(
-        caches.match(req)
-            .then(r1 => r1 || fetch(req))
-            .catch(console.log)
+        caches.match(e.request).then(response => {
+            return response || fetch(e.request);
+        })
     )
-}
-self.addEventListener('fetch', cacheCB);
+})
