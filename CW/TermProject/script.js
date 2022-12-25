@@ -1,4 +1,4 @@
-
+serviceWork();
 let gameType = "csgo";
 let currency = "usd";
 let lang = "en";
@@ -1030,7 +1030,7 @@ function init() {
     changeItemsLang();
     changeItemCurrencies();
     depositMoneyModal();
-    serviceWork();
+    
 }
 
 init();
