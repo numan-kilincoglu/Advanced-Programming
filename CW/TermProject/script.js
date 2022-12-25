@@ -909,19 +909,19 @@ function setCurrency() {
 
     if (currency == undefined) {
         text.innerHTML = mobileText.innerHTML = "USD";
-        icon.src = balanceIcon.src = deskBalanceIcon.src = "assets/usd.png"
+        icon.src = balanceIcon.src = deskBalanceIcon.src = "assets/usd.PNG"
     }
     if (currency == "EUR") {
         text.innerHTML = mobileText.innerHTML = "EUR";
-        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/eur.png"
+        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/eur.PNG"
     }
     if (currency == "USD") {
         text.innerHTML = mobileText.innerHTML = "USD";
-        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/usd.png";
+        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/usd.PNG";
     }
     if (currency == "TRY") {
         text.innerHTML = mobileText.innerHTML = "TRY";
-        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/try.png"
+        icon.src = mobileIcon.src = balanceIcon.src = deskBalanceIcon.src = "assets/try.PNG"
     }
 }
 
