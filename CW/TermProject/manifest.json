@@ -3,7 +3,7 @@
     "short_name": "Game Garket",
     "icons": [{
       "src": "assets/game-icon.PNG",
-        "sizes": "285x235",
+        "sizes": "128x128",
         "type": "image/png"
       }],
     "start_url": "/index.html",
