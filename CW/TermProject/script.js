@@ -1014,7 +1014,6 @@ function serviceWork() {
             console.log(err);
         })
     }
-
 }
 
 function init() {

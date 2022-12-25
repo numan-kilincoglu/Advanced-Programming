@@ -1,20 +1,21 @@
-self.addEventListener("install", (e) => {
+const CACHE = 'termProject'
+const FILES = ["index.html", "style.css", "assets/", "script.js", "assets/game-icon.PNG"]
+function installCB(e) {
     e.waitUntil(
-        caches.open("static").then(
-            cache => {
-                console.log("geldi")
-                return cache.addAll(["./","./index.html", "./style.css", "./assets/", "./script.js", "./assets/game-icon.PNG"]);
-
-            }
-        )
+        caches.open(CACHE)
+            .then(cache => cache.addAll(FILES))
+            .catch(console.log)
     )
-});
+}
 
-self.addEventListener("fetch", e => {
-    // // console.log(`getir from ${e.request.url}`);
+self.addEventListener('install', installCB)
+
+function cacheCB(e) { //cache first
+    let req = e.request
     e.respondWith(
-        caches.match(e.request).then(response => {
-            return response || fetch(e.request);
-        })
+        caches.match(req)
+            .then(r1 => r1 || fetch(req))
+            .catch(console.log)
     )
-});
+}
+self.addEventListener('fetch', cacheCB)
