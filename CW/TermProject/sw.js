@@ -1,13 +1,14 @@
 const CACHE = 'termProject'
 const FILES =
     [
-        "style.css",
-        "index.html",
-        "manifest.json",
-        "assets/",
-        "script.js",
-        "assets/game-icon192.PNG",
-        "assets/itemImages/"
+        "./",
+        "./style.css",
+        "./index.html",
+        "./manifest.json",
+        "./assets/",
+        "./script.js",
+        "./assets/game-icon192.PNG",
+        "./assets/itemImages/"
     ];
 
 const ICONS =
@@ -79,6 +80,7 @@ const ICONS =
 self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open(CACHE).then(
+
             cache => {
                 return cache.addAll(FILES.concat(ICONS));
             }
