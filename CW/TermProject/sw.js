@@ -82,7 +82,7 @@ self.addEventListener("install", (e) => {
         caches.open(CACHE).then(
 
             cache => {
-                return cache.addAll(FILES);
+                return cache.add("./style.css");
             }
         )
     )
