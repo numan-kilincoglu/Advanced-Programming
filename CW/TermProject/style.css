@@ -795,40 +795,18 @@ body {
 }
 
 .market-buttons {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-gap: 8px;
-    gap: 8px;
-}
+    width: 100%;
 
-.buy-now-button {
-    font-weight: 600;
-    letter-spacing: .01em;
-    font-size: 12px;
-    color: beige;
-    font-family: 'Mont', sans-serif;
-    height: 28px;
-    border: none;
-    border-radius: 2px;
-    white-space: nowrap;
-    padding: 0px;
-    transition: background-color .3s;
-    background-color: #0ad68b;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-
-}
-
-.buy-now-button:hover {
-    background-color: #04AA6D;
 }
 
 .add-cart-button {
-    height: 28px;
+    height: 78%;
+    width: 100%;
     border: none;
     border-radius: 2px;
     white-space: nowrap;
     padding: 0px;
-    background-color: #393f47;
+    background-color: #0ad68b;
     transition: background-color .3s;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
@@ -838,8 +816,8 @@ body {
 }
 
 .add-cart-button #button_ic {
-    height: 14px;
-    width: 14px;
+    height: 24px;
+    width: 24px;
     padding-top: 2px;
 }
 

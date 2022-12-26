@@ -319,12 +319,11 @@ function cardItem(img, name, secondName, rarity, price, id) {
                 </div>
             </div>
             <div class="button-wrapper">
-            <div class="market-buttons">
-                <button id="buy-now" class="buy-now-button"></button>
+        
                 <button id=${id} class="add-cart-button" onclick="addTocart(this)">
                     <img id="button_ic" src="assets/cart.png">
                 </button>
-            </div>
+
         </div>
         </div>
     </div>
@@ -521,7 +520,7 @@ function changeItemCurrencies() {
         factor = 18.65; currencyMark = "₺ ";
     }
     for (var item of cards) {
-        itemId = parseInt(item.querySelector(".market-buttons .add-cart-button").id);
+        itemId = parseInt(item.querySelector(".add-cart-button").id);
         var itemObj = getItem(itemId);
         item.querySelector("#item-price-span").innerHTML = (itemObj.price * factor).toFixed(2);
         item.querySelector("#cur-mark").innerHTML = currencyMark;
