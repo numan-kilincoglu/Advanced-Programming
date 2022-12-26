@@ -1,6 +1,6 @@
 const CACHE = 'termProject'
 const FILES =
-    ["/",
+    [
         "style.css",
         "index.html",
         "assets/",
