@@ -959,7 +959,6 @@ function changeItemsLang() {
         document.querySelector("#purchase-button").innerHTML = "Satın Al";
         document.querySelector("#refill").innerHTML = "Bakiye Tutarı";
         document.querySelector("#deposit").innerHTML = "Para Yükle";
-        changeButtonLang("Hemen Satın Al");
     } else {
         document.querySelector("#filter_text").innerHTML = "Filter";
         document.querySelector("#reset-filter").innerHTML = "Reset";
@@ -991,17 +990,9 @@ function changeItemsLang() {
         document.querySelector("#purchase-button").innerHTML = "Purchase";
         document.querySelector("#refill").innerHTML = "Refill Balance";
         document.querySelector("#deposit").innerHTML = "Deposit Money";
-        changeButtonLang("Buy Now");
-    }
-
-}
-
-function changeButtonLang(lang) {
-    var list = document.querySelectorAll(".buy-now-button");
-    for (var element of list) {
-        element.innerHTML = lang;
     }
 }
+
 
 function serviceWork() {
     if ("serviceWorker" in navigator) {
