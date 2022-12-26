@@ -3,9 +3,9 @@ const FILES =
     [
         "style.css",
         "index.html",
+        "manifest.json",
         "assets/",
         "script.js",
-        "manifest.json",
         "assets/game-icon192.PNG",
         "assets/itemImages/"
     ];
@@ -75,27 +75,22 @@ const ICONS =
         "assets/itemImages/rust/vest.png"
     ];
 
-const ITEMS =
-    [
 
-    ];
-
-function installCB(e) {
+self.addEventListener("install", (e) => {
     e.waitUntil(
-        caches.open(CACHE)
-            .then(cache => cache.addAll(FILES.concat(ICONS)))
-            .catch(console.log)
+        caches.open(CACHE).then(
+            cache => {
+                return cache.addAll(FILES.concat(ICONS));
+            }
+        )
     )
-}
+});
 
-self.addEventListener('install', installCB)
-
-function cacheCB(e) { //cache first
-    let req = e.request
+self.addEventListener("fetch", e => {
+    console.log(`getir from ${e.request.url}`);
     e.respondWith(
-        caches.match(req)
-            .then(r1 => r1 || fetch(req))
-            .catch(console.log)
+        caches.match(e.request).then(response => {
+            return response || fetch(e.request);
+        })
     )
-}
-self.addEventListener('fetch', cacheCB)
+})
