@@ -1,14 +1,14 @@
 const CACHE = 'termProject'
 const FILES =
     [
-        "./",
-        "./style.css",
-        "./index.html",
-        "./manifest.json",
-        "./assets/",
-        "./script.js",
-        "./assets/game-icon192.PNG",
-        "./assets/itemImages/"
+        "/",
+        "/style.css",
+        "/index.html",
+        "/manifest.json",
+        "/assets/",
+        "/script.js",
+        "/assets/game-icon192.PNG",
+        "/assets/itemImages/"
     ];
 
 const ICONS =
