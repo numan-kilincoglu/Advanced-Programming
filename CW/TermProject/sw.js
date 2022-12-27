@@ -4,7 +4,8 @@ self.addEventListener("install", (e) => {
     e.waitUntil(
         caches.open(CACHE).then(
             cache => {
-                return cache.addAll(["./","./style.css", "./index.html", "./manifest.json", "./script.js"]);
+                return cache.addAll(["./","./style.css", "./index.html", "./manifest.json", "./script.js",
+            "assets/down.png"]);
             }
         )
     )
