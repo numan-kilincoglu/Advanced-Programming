@@ -7,7 +7,7 @@ let maxPrice = 0;
 let cartArray = [];
 var cartSizeDiv = document.querySelector("#cart-size");
 var mobileCartSpan = document.querySelector("#mobile-cart-size");
-var cardDiv = document.querySelector("#cart-grid-div");
+var cardDiv = documxent.querySelector("#cart-grid-div");
 var cartTotal = document.querySelector("#cart-total");
 let usdRate = 18.65;
 let euroRate = 19.5;
@@ -428,7 +428,7 @@ function searchItem(e) {
             || item.secondName.includes(e.value)))
         .forEach(item => {
             div.innerHTML = div.innerHTML
-                + cardItem(item.img, item.name, item.secondName, item.rarity, item.price);
+                + cardItem(item.img, item.name, item.secondName, item.rarity, item.price, item.id);
         });
 }
 
