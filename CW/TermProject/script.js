@@ -62,8 +62,8 @@ const itemArray =
         {
             id: 6,
             game: "csgo",
-            name: "Butterfly Knife",
-            secondName: "Ruby",
+            name: "M4A4",
+            secondName: "Howl",
             rarity: "Covert",
             price: 131100,
             img: "assets/itemImages/csgo/howl.png",
@@ -80,7 +80,7 @@ const itemArray =
         {
             id: 8,
             game: "csgo",
-            name: "karambit Knife",
+            name: "Karambit Knife",
             secondName: "Ruby",
             rarity: "Covert",
             price: 5000,
@@ -89,9 +89,9 @@ const itemArray =
         {
             id: 9,
             game: "csgo",
-            name: "M4A4",
-            secondName: "karambit Knife",
-            rarity: "Lore",
+            name: "Karambit Knife",
+            secondName: "Lore",
+            rarity: "Covert",
             price: 2300,
             img: "assets/itemImages/csgo/lore.png",
         },
