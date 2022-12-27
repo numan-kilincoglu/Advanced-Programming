@@ -5,7 +5,7 @@ self.addEventListener("install", (e) => {
         caches.open(CACHE).then(
             cache => {
                 return cache.addAll(["./","./style.css", "./index.html", "./manifest.json", "./script.js",
-            "assets/down.png"]);
+            "assets/down.png", "assets/delete.svg"]);
             }
         )
     )
