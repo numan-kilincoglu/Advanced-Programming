@@ -449,7 +449,7 @@ function sortTabIcon(sort) {
     sortedArray.filter(e => e.game == gameType)
         .forEach(item => {
             div.innerHTML = div.innerHTML
-                + cardItem(item.img, item.name, item.secondName, item.rarity, item.price);
+                + cardItem(item.img, item.name, item.secondName, item.rarity, item.price, item.id);
         });
 }
 
