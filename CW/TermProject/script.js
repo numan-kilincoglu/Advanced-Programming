@@ -443,6 +443,7 @@ function sortTabIcon(sort) {
         sortedArray.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     } if (sort == "desc") {
         icon.src = "assets/down.png";
+        console.log(icon.src)
         sortedArray.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
     }
     sortedArray.filter(e => e.game == gameType)
