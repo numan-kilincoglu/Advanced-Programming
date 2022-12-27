@@ -65,7 +65,7 @@ const itemArray =
             name: "Butterfly Knife",
             secondName: "Ruby",
             rarity: "Covert",
-            price: 131100,
+            price: 6200,
             img: "assets/itemImages/csgo/butterfly-ruby.png",
         },
         {
