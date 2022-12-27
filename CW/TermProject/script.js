@@ -62,11 +62,11 @@ const itemArray =
         {
             id: 6,
             game: "csgo",
-            name: "M4A4",
-            secondName: "Howl",
+            name: "Butterfly Knife",
+            secondName: "Ruby",
             rarity: "Covert",
             price: 131100,
-            img: "assets/itemImages/csgo/howl.png",
+            img: "assets/itemImages/csgo/butterfly-ruby.png",
         },
         {
             id: 7,
